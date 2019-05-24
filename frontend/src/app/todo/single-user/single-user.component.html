@@ -1,0 +1,308 @@
+<div class="list-container">
+  <div>
+    <div class="list-container__search-box-container">
+      <input
+        [(ngModel)]="term"
+        class="list-container__search-box"
+        placeholder="Search any list..."
+      />
+      <button class="list-container__search__button">
+        Search
+      </button>
+    </div>
+
+    <div class="list-container__create-btn-container">
+      <button
+        (click)="onClickOnCreateList()"
+        class="list-container__create-list__button"
+      >
+        Create List
+      </button>
+    </div>
+
+    <div class="list-container__list-options">
+      <div class="list-container__list-type" (click)="onSelectListType()">
+        All Lists
+        <div class="select-mode" *ngIf="dropDown">
+          <div class="select-mode_type" *ngFor="let mode of listMode">
+            <div *ngIf="mode != selectedListMode" (click)="onSelectMode(mode)">
+              {{ mode }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <i id="angle-down" class="fas fa-angle-down"></i>
+    </div>
+  </div>
+  <hr />
+  <div class="list-container__box">
+    <div class="list-container__lists">
+      <!--Create list-->
+      <div class="list-container__list" *ngIf="createList">
+        <div class="list-container__create-list-name">
+          List Name
+        </div>
+        <div class="list-container__create-list-options">
+          <div
+            class="list-container__create-list-type"
+            (click)="onClickOnMode()"
+          >
+            {{ selectedListMode }}
+          </div>
+          <i id="angle-down" class="fas fa-angle-down"></i>
+          <div class="select-mode" *ngIf="dropDown">
+            <div class="select-mode_type" *ngFor="let mode of listMode">
+              <div
+                *ngIf="mode != selectedListMode"
+                (click)="onSelectMode(mode)"
+              >
+                {{ mode }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <input
+          class="form-control create-list-box mr-sm-2"
+          placeholder="My new List..."
+          [(ngModel)]="listName"
+        />
+        <button
+          class="list-container__save-list__button"
+          (click)="createNewList()"
+        >
+          Create
+        </button>
+        <button
+          class="list-container__cancel-list__button"
+          (click)="onClickOnCancel()"
+        >
+          Cancel
+        </button>
+      </div>
+      <!--Create list end-->
+      <div
+        class="list-container__list"
+        *ngFor="let list of allLists | filter: term"
+      >
+        <!--Edit list-->
+        <div
+          class="list-container__task"
+          *ngIf="showList && list.listId === listId"
+        >
+          <div class="list-container__add-sub-task">
+            List Name
+          </div>
+
+          <input
+            class="form-control create-task-box mr-sm-2"
+            [(ngModel)]="updateListName"
+          />
+          <button
+            class="list-container__save-list__button"
+            (click)="updateList()"
+          >
+            Update
+          </button>
+          <button
+            class="list-container__cancel-list__button"
+            (click)="onClickOnCancelList()"
+          >
+            Cancel
+          </button>
+        </div>
+        <!--Edit list ends-->
+        <div *ngIf="!showList || list.listId !== listId">
+          <div class="list-container__options">
+            <i class="fas fa-plus" (click)="onClickOnAdd(list)"></i>
+            <i class="far fa-edit" (click)="onClickOnEditList(list)"></i>
+            <i
+              class="fa fa-times"
+              (click)="onClickOnClose(list)"
+              data-toggle="modal"
+              data-target=".bd-example-modal-sm"
+            ></i>
+          </div>
+          <hr id="hr" />
+          <div class="list-container__list-name">
+            {{ list.listName }}
+          </div>
+        </div>
+        <!--Create task-->
+        <div
+          *ngIf="listId == list.listId && addTask"
+          class="list-container__task"
+        >
+          <div *ngIf="addTask">
+            <div class="list-container__add-task">
+              Task Name
+            </div>
+
+            <input
+              class="form-control create-task-box mr-sm-2"
+              placeholder="Add New Task..."
+              [(ngModel)]="taskName"
+            />
+            <button
+              class="list-container__save-list__button"
+              (click)="createNewTask()"
+            >
+              Add Task
+            </button>
+            <button
+              class="list-container__cancel-list__button"
+              (click)="onClickOnCancel()"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+        <!--End task-->
+        <!--Show all tasks-->
+        <div class="all-tasks__container" *ngFor="let task of list.tasks">
+          <div *ngIf="task.listId === list.listId">
+            <!--Edit task-->
+            <div class="list-container__task" *ngIf="task.itemId === taskId">
+              <div class="list-container__add-sub-task">
+                Task Name
+              </div>
+
+              <input
+                class="form-control create-task-box mr-sm-2"
+                [(ngModel)]="updateTaskName"
+              />
+              <button
+                class="list-container__save-list__button"
+                (click)="updateTask()"
+              >
+                Update
+              </button>
+              <button
+                class="list-container__cancel-list__button"
+                (click)="onClickOnCancelTask()"
+              >
+                Cancel
+              </button>
+            </div>
+            <!--Edit task ends-->
+            <div *ngIf="showTask || task.itemId !== taskId">
+              <div class="task__options">
+                <i class="fas fa-plus " (click)="onClickOnAddSubTask(task)"></i>
+                <i
+                  class="far fa-edit"
+                  (click)="onClickOnEditTask(task, list)"
+                ></i>
+                <i
+                  class="far fa-trash-alt "
+                  (click)="onClickOnCloseTask(list, task)"
+                  data-toggle="modal"
+                  data-target=".bd-example-modal-sm"
+                ></i>
+              </div>
+              <hr id="hr" />
+              <div class="task-name">{{ task?.itemName }}</div>
+            </div>
+            <div
+              class="list-container__task"
+              *ngIf="addSubTask && task.itemId == taskId"
+            >
+              <div class="list-container__add-sub-task">
+                Subtask Name
+              </div>
+
+              <input
+                class="form-control create-task-box mr-sm-2"
+                placeholder="Add New Task..."
+                [(ngModel)]="subTaskName"
+              />
+              <button
+                class="list-container__save-list__button"
+                (click)="createNewSubTask(task, list)"
+              >
+                Add Subtask
+              </button>
+              <button
+                class="list-container__cancel-list__button"
+                (click)="onClickOnCancel()"
+              >
+                Cancel
+              </button>
+            </div>
+            <div
+              class="sub-task-container"
+              *ngFor="let subtask of task.subItems"
+            >
+              <!--Edit subtask-->
+              <div
+                class="list-container__task"
+                *ngIf="subtask.subItemId === subTaskId"
+              >
+                <div class="list-container__add-sub-task">
+                  Subtask Name
+                </div>
+
+                <input
+                  class="form-control create-task-box mr-sm-2"
+                  [(ngModel)]="updateSubTaskName"
+                />
+                <button
+                  class="list-container__save-list__button"
+                  (click)="updateSubTask(subtask)"
+                >
+                  Update
+                </button>
+                <button
+                  class="list-container__cancel-list__button"
+                  (click)="onClickOnCancelSubTask()"
+                >
+                  Cancel
+                </button>
+              </div>
+              <!--Edit subtask ends-->
+              <!--Subtask list-->
+              <div *ngIf="subtask.subItemId !== subTaskId">
+                <div class="sub-task__options">
+                  <i
+                    class="far fa-edit"
+                    (click)="onClickOnEditSubTask(subtask, task, list)"
+                  ></i>
+
+                  <i
+                    class="far fa-trash-alt"
+                    (click)="onClickOnDeleteSubTask(list, task, subtask)"
+                    data-toggle="modal"
+                    data-target=".bd-example-modal-sm"
+                  ></i>
+                </div>
+                <hr class="" id="hr" />
+                <div class="sub-task-name">{{ subtask.subItemName }}</div>
+              </div>
+              <!--Subtask list ends-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Small modal -->
+
+      <div #closeModal *ngIf="modal" class="modal fade bd-example-modal-sm">
+        <div class="modal-dialog modal-sm ">
+          <div class="modal-content dialog-box">
+            Are you sure!, You want to delete "{{ name }}" ?
+            <div class="btn-wrapper">
+              <button class="dialog-box__yes" (click)="onClickOnYes()">
+                Yes
+              </button>
+              <button class="dialog-box__no" (click)="onClickOnNo()">
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  Copyright &copy; LetsDo.
+</footer>

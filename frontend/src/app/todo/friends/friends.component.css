@@ -1,0 +1,168 @@
+.user-list__container {
+  background: ghostwhite;
+  height: 100vh;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.user-list {
+  min-height: 20vh;
+  background: white;
+  width: 70%;
+  margin: 0 15%;
+  border-radius: 6px;
+  margin-top: 2rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.user-list hr {
+  border: 1px solid #3d5a6c;
+}
+
+.user-details {
+  background: #dcf5f2;
+  padding: 0.5rem;
+  height: 4rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.user-details:hover {
+  background: rgb(195, 236, 195);
+}
+
+.first-char__circle {
+  background: #7b8083;
+  height: 3rem;
+  width: 3rem;
+  padding: 0.2rem;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+}
+.user-name {
+  display: inline-block;
+  margin: 0 1rem;
+}
+.button {
+  width: 10rem;
+  height: 2rem;
+
+  display: inline-block;
+  float: right;
+  color: white;
+  border-radius: 17px;
+  margin: 0.5rem 0.5rem;
+}
+.add-friend__btn {
+  background: #3d5a6c;
+  border: #3d5a6c;
+}
+.add-friend__btn:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cancel-friend__req {
+  background: #e22b2b;
+  border: #e22b2b;
+}
+
+.cancel-friend__req:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.reject-friend__req {
+  background: #f89b9bde;
+  border: #f89b9bde;
+}
+
+.reject-friend__req:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.accept-friend__req {
+  background: #088364;
+  border: #088364;
+}
+
+.accept-friend__req:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#name {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 640px) {
+  .first-char__circle {
+    background: #7b8083;
+    height: 2rem;
+    width: 2rem;
+    padding: 0.3rem;
+    color: white;
+    font-size: 1rem;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    margin: 0.5rem 0;
+  }
+  .user-name {
+    font-size: 0.8rem;
+  }
+
+  .button {
+    width: 5rem;
+    height: 1.5rem;
+    font-size: 0.8rem;
+    display: inline-block;
+    float: right;
+    color: white;
+    border-radius: 17px;
+    margin: 0.7rem 0.5rem;
+  }
+  .add-friend__btn {
+    background: #3d5a6c;
+    border: #3d5a6c;
+  }
+}
+
+.btn-container {
+  display: inline-block;
+  width: 100%;
+}
+
+.button,
+.rec_button {
+  display: inline-block;
+  background: #1db39a;
+  border: #1db39a;
+  color: white;
+  margin: 0.5rem 1.5rem;
+  padding: 0.3rem 1.5rem;
+  border-radius: 17px;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.rec_button:hover,
+.button:hover {
+  background: #04d183;
+  border: #04d183;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+hr {
+  margin: 0;
+  border: 1px solid #93c7e7;
+}
+
+#footer {
+  text-align: center;
+  background: rgb(5, 92, 107);
+  height: 40px;
+  padding: 0.5rem;
+  color: white;
+}

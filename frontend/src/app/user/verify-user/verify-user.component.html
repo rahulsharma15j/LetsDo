@@ -1,0 +1,61 @@
+<div id="parent">
+  <nav class="navbar navbar-expand-sm">
+    <a class="navbar-brand" href="" (click)="onClickOnLink($event)"
+      ><h3>LetsDo</h3></a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navItems"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navItems">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item ml-auto">
+          <a
+            class="nav-link"
+            (click)="onClick()"
+            #closeModal
+            *ngIf="!signupSuccess"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+            >LOGIN</a
+          >
+        </li>
+        <li class="nav-item ml-auto">
+          <a
+            class="nav-link"
+            (click)="onClick()"
+            #closeModal
+            *ngIf="!signupSuccess"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+            >SIGNUP</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="form-div">
+      <div class="banner">
+        <h3>Account activation</h3>
+        <h4 *ngIf="message">Your account is already verified.</h4>
+        <h2 *ngIf="isActivated">Contratulations!</h2>
+        <h6 *ngIf="isActivated">Your account is verified successfully.</h6>
+        <div
+          class="spinner-border loader text-danger"
+          *ngIf="isProcessing"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer id="footer">
+  Copyright &copy; LetsDo.
+</footer>

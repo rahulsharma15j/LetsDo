@@ -1,0 +1,23 @@
+<div class="user-list__container">
+  <!--Notification start-->
+  <div class="user-list">
+    <h5 style="text-align:center">All Notifications</h5>
+    <hr />
+    <div class="user-details" *ngFor="let notification of allNotifications">
+      <div class="notification-desc">
+        {{ notification.data }}
+      </div>
+
+      <button
+        class="button delete-noti__btn"
+        (click)="deleteNotification(notification.notificationId)"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+  <!--Notification end-->
+</div>
+<footer id="footer">
+  Copyright &copy; LetsDo.
+</footer>

@@ -1,0 +1,32 @@
+.navbar-brand{
+    margin-left: 3%;
+}
+
+ul{
+    margin-right: 3%;
+}
+
+nav .navbar-nav li a{
+    color: white !important;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.title{
+    font-family: 'Source Sans Pro',sans-serif;
+    position: absolute;
+    top:50%;
+    left:28%;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color:mintcream;
+   
+}
+
+.navbar{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+}

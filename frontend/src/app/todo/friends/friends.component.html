@@ -1,0 +1,110 @@
+<div class="btn-container">
+  <button (click)="onClickSentReq()" class="button">
+    Sent Requests
+  </button>
+
+  <button (click)="onClickReceivedReq()" class="rec_button">
+    Received Requests
+  </button>
+</div>
+<hr />
+
+<div class="user-list__container">
+  <!--users list-->
+  <div class="user-list" *ngIf="findFriends">
+    <h5 style="text-align:center">Friends list</h5>
+    <hr />
+    <div *ngFor="let friend of allFriendsList">
+      <div class="user-details" *ngIf="friend.friendId !== userId">
+        <div class="first-char__circle">
+          {{ friend?.friendName.toUpperCase().charAt(0) }}
+        </div>
+        <div class="user-name">
+          <p id="name" (click)="onSelectedFriend(friend)">
+            {{ friend?.friendName }}
+          </p>
+        </div>
+        <button class="button add-friend__btn" (click)="unfriendUser(friend)">
+          Unfriend
+        </button>
+      </div>
+    </div>
+  </div>
+  <!--users list end-->
+  <!--users list-->
+  <div class="user-list" *ngIf="findFriends">
+    <h5 style="text-align:center">Users you may know</h5>
+    <hr />
+    <div *ngFor="let user of allUsersList">
+      <div class="user-details" *ngIf="user.userId !== userId">
+        <div class="first-char__circle">
+          {{ user.firstName.toUpperCase().charAt(0)
+          }}{{ user.lastName.toUpperCase().charAt(0) }}
+        </div>
+        <div class="user-name">{{ user.firstName }} {{ user.lastName }}</div>
+        <button
+          class="button add-friend__btn"
+          (click)="sendFriendRequest(user)"
+        >
+          Add Friend
+        </button>
+      </div>
+    </div>
+  </div>
+  <!--users list end-->
+
+  <!--Sent Requests-->
+  <div class="user-list" *ngIf="cancelRequest">
+    <h5 style="text-align:center">All Sent Requests</h5>
+    <hr />
+    <div *ngFor="let request of allSentRequestsList">
+      <div class="user-details">
+        <div class="first-char__circle">
+          {{ request?.friendName.toUpperCase().charAt(0) }}
+        </div>
+        <div class="user-name">
+          {{ request?.friendName }}
+        </div>
+        <button
+          class="button cancel-friend__req"
+          (click)="cancelFriendRequest(request)"
+        >
+          Cancel Request
+        </button>
+      </div>
+    </div>
+  </div>
+  <!--Sent Requests end-->
+
+  <!--Received Requests-->
+  <div class="user-list" *ngIf="receivedRequest">
+    <h5 style="text-align:center">All Received Requests</h5>
+    <hr />
+    <div *ngFor="let request of allReceivedRequestsList">
+      <div class="user-details">
+        <div class="first-char__circle">
+          {{ request?.friendName.toUpperCase().charAt(0) }}
+        </div>
+        <div class="user-name">
+          {{ request?.friendName }}
+        </div>
+        <button
+          class="button accept-friend__req"
+          (click)="acceptFriendRequest(request)"
+        >
+          Accept Request
+        </button>
+        <button
+          class="button reject-friend__req"
+          (click)="rejectFriendRequest(request)"
+        >
+          Reject Request
+        </button>
+      </div>
+    </div>
+  </div>
+  <!--Received Requests end-->
+</div>
+<footer id="footer">
+  Copyright &copy; LetsDo.
+</footer>

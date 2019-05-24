@@ -1,0 +1,50 @@
+.parent-div {
+  height: 86vh;
+  width: 100%;
+  background-size: cover;
+}
+
+.banner {
+  width: 60%;
+  height: 80%;
+  margin-left: 20%;
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.parent-div,
+.banner {
+  padding-top: 5%;
+  position: relative;
+}
+
+.btn-back {
+  width: 10rem;
+  height: 2rem;
+  background: #088364;
+  border: #088364;
+  display: inline-block;
+  color: white;
+  border-radius: 17px;
+  margin: 2rem 0.5rem;
+}
+.btn-back:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#footer {
+  text-align: center;
+  background: rgb(5, 92, 107);
+  height: 40px;
+  padding: 0.5rem;
+  color: white;
+}
+
+@media screen and (max-width: 40rem) {
+  .banner {
+    width: 80%;
+    margin: 0 auto;
+  }
+}

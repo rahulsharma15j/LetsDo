@@ -1,0 +1,19 @@
+.navbar {
+    height: 60px;
+    color: white;
+    background: #3d5a6c;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .navbar h3 {
+    color: white;
+  }
+
+  .nav-item i {
+    margin: 0.3rem;
+  }
+  .nav-item a:hover {
+    color: rgb(106, 255, 230);
+    cursor: pointer;
+  }
+ 

@@ -1,0 +1,194 @@
+.backdrop {
+  display: none;
+  position: fixed;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 2s linear;
+}
+
+.nav-wrapper {
+  height: 60px;
+}
+
+.navbar {
+  width: 100%;
+  height: 60px;
+  color: white;
+  background: #3d5a6c;
+  padding-left: 5%;
+  padding-right: 5%;
+  position: fixed;
+  z-index: 99;
+}
+
+.navbar h3 {
+  color: white;
+}
+
+.nav-item {
+  margin: 0 1rem;
+  padding: 0 0.5rem;
+  font-size: 0.9rem;
+}
+.nav-item a {
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  color: rgb(106, 255, 230);
+}
+
+.navbar .brand {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.nav-link i {
+  margin-right: 0.5rem;
+}
+
+.navbar-brand .brand,
+.mb-search,
+.toggle-button {
+  display: none;
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  right: 0;
+  background: #3d5a6c;
+  width: 80%;
+  height: 100vh;
+}
+
+.mobile-nav__items {
+  width: 90%;
+  height: 100%;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+}
+
+.mobile-nav__item {
+  margin: 0.5rem 0;
+}
+
+.mobile-nav a {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.mobile-nav-item {
+  padding-right: 1rem;
+  margin: 0;
+}
+
+.toggle-button {
+  width: 2.5rem;
+  background: transparent;
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggle-button__bar {
+  width: 100%;
+  height: 0.2rem;
+  background: white;
+  display: block;
+  margin: 0.4rem 0;
+}
+
+.mobile-nav__close-btn {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  margin: 0.4rem 0.4rem;
+  float: right;
+}
+
+.close-mobile-nav {
+  cursor: pointer;
+  color: white;
+  margin: 0.5rem 1rem;
+  font-size: 2rem;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+#user-name {
+  background: white;
+  color: black;
+  border-radius: 17px;
+  padding: 0.2rem 1rem;
+  margin: 0.4rem 0;
+}
+
+#user-name:hover {
+  background: rgb(106, 255, 230);
+}
+
+@media screen and (max-width: 964px) {
+  #brand,
+  #nav-bar {
+    display: none;
+  }
+
+  .navbar-brand .brand,
+  .mb-search,
+  .mobile-search-box,
+  .toggle-button {
+    display: inline-block;
+  }
+
+  .navbar-brand .brand {
+    float: left;
+  }
+
+  .navbar-expand-sm .navbar-collapse {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #brand,
+  #nav-bar {
+    display: none;
+  }
+
+  .navbar-brand .brand,
+  .mb-search,
+  .mobile-search-box,
+  .toggle-button {
+    display: inline-block;
+  }
+
+  .navbar-brand .brand {
+    float: left;
+  }
+
+  .navbar-expand-sm .navbar-collapse {
+    display: none !important;
+  }
+}

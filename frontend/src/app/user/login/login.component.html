@@ -1,0 +1,87 @@
+<div id="parent">
+  <nav class="navbar navbar-expand-sm">
+    <a class="navbar-brand" href="" (click)="onClickOnLink($event)"
+      ><h3>LetsDo</h3></a
+    >
+    
+    <div class="collapse navbar-collapse"  >
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item ml-auto">
+          <a
+            class="nav-link"
+            (click)="gotoSignUp()"
+            
+            >SIGNUP</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="mobile-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item ml-auto">
+          <a class="nav-link"  (click)="gotoSignUp()"> SIGNUP</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="form-div">
+      <div class="heading">
+        <h5>
+          Login To Continue
+          <hr />
+        </h5>
+      </div>
+      <form #signUpForm="ngForm" (ngSubmit)="logInUser(signUpForm)">
+        <div class="form-group">
+          <label for="email">Email or Username</label>
+          <input
+            type="email"
+            id="inputEmail"
+            class="form-control form-control-sm"
+            [(ngModel)]="email"
+            placeholder="Username (6 chars or more)"
+            name="email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="Password">Password</label>
+          <input
+            type="password"
+            id="inputPassword"
+            class="form-control form-control-sm"
+            [(ngModel)]="password"
+            placeholder="Password"
+            name="password"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <a routerLink="/forgot" class="forgot-password">Forgot password?</a>
+        </div>
+
+        <div class="form-group">
+          <button
+            class="btn  btn-block custom-btn btn-sm"
+            *ngIf="!isProcessing"
+            type="submit"
+          >
+            LogIn
+          </button>
+          <div
+            class="spinner-border loader text-danger"
+            *ngIf="isProcessing"
+            role="status"
+          >
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<footer id="footer">
+  Copyright &copy; LetsDo.
+</footer>

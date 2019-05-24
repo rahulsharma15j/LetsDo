@@ -1,0 +1,84 @@
+<div class="backdrop" (click)="closeMobileNav()"></div>
+<div class="nav-wrapper">
+  <!--Navbar starts-->
+  <nav class="navbar navbar-expand-sm">
+    <a id="brand" class="navbar-brand" href="" (click)="onClickOnLink($event)"
+      ><h3>LetsDo</h3></a
+    >
+    <div class="collapse navbar-collapse">
+      <ul id="nav-bar" class="navbar-nav ml-auto ">
+        <li class="nav-item ml-auto">
+          <a class="nav-link" (click)="gotoList()"
+            ><i class="fas fa-home"></i>Home</a
+          >
+        </li>
+        <li class="nav-item ml-auto">
+          <a class="nav-link" (click)="gotoFriends()"
+            ><i class="fas fa-user-friends"></i>Find Friends</a
+          >
+        </li>
+        <li class="nav-item ml-auto">
+          <a class="nav-link" (click)="gotoNotifications()"
+            ><i class="fas fa-bell"></i>Notifications</a
+          >
+        </li>
+        <li class="nav-item ml-auto">
+          <a id="user-name" class="nav-link"
+            ><i class="fas fa-user"></i>{{ userName }}
+          </a>
+        </li>
+        <li class="nav-item ml-auto">
+          <a class="nav-link" (click)="logOutUser()"
+            ><i class="fa fa-power-off" aria-hidden="true"></i>Log out</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <a class="navbar-brand" href="" (click)="onClickOnLink($event)"
+      ><div class="brand">LetsDo</div></a
+    >
+
+    <button class="toggle-button" (click)="mobileNavHandler()">
+      <span class="toggle-button__bar"></span>
+      <span class="toggle-button__bar"></span>
+      <span class="toggle-button__bar"></span>
+    </button>
+  </nav>
+  <!--Navbar ends-->
+</div>
+
+<!--Mobile menu starts-->
+<nav class="mobile-nav">
+  <div class="mobile-nav__close-btn">
+    <i class="fa fa-times close-mobile-nav" (click)="closeMobileNav()"></i>
+  </div>
+  <ul class="mobile-nav__items">
+    <li class="mobile-nav__item">
+      <a href="" class="mobile-nav__link" (click)="gotoList()">Home</a>
+    </li>
+    <li class="mobile-nav__item">
+      <a href="" class="mobile-nav__link" (click)="gotoFriends()"
+        >Find Friends</a
+      >
+    </li>
+    <li class="mobile-nav__item">
+      <a href="" class="mobile-nav__link" (click)="gotoNotifications()"
+        >Notifications</a
+      >
+    </li>
+    <li class="mobile-nav__item" (click)="logOutUser()">
+      <a href="" class="mobile-nav__link">Log Out</a>
+    </li>
+  </ul>
+</nav>
+<!--Mobile menu ends-->
+<div class="wrapper" *ngIf="list">
+  <router-outlet></router-outlet>
+</div>
+<div class="wrapper" *ngIf="friends">
+  <router-outlet></router-outlet>
+</div>
+<div class="wrapper" *ngIf="notifications">
+  <router-outlet></router-outlet>
+</div>

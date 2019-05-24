@@ -1,0 +1,318 @@
+.navbar {
+    height: 60px;
+    color: white;
+    background: #3d5a6c;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .navbar h3 {
+    color: white;
+  }
+  
+  .nav-item {
+    padding: 0 0.2rem;
+    margin: 0 2rem;
+  }
+  .nav-item a {
+    cursor: pointer;
+  }
+  
+  .nav-item i:hover {
+    color: rgb(106, 255, 230);
+  }
+  
+  .search-box {
+    width: 300px;
+    background: #ffffff;
+    color: white;
+    border: 1px solid #4dd0e1;
+    box-shadow: none;
+    border-radius: 17px;
+  }
+  
+  .list-container {
+    background: #e7f8f7;
+    height: calc(100vh - 60px);
+  }
+  
+  .list-container__create-list__button {
+    background: #1db39a;
+    border: #1db39a;
+    color: white;
+    margin: 0.5rem 1.5rem;
+    padding: 0.3rem 1.5rem;
+    border-radius: 17px;
+    outline: none;
+  }
+  
+  .list-container__create-list__button:hover {
+    background: #04d183;
+    border: #04d183;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .list-container hr {
+    margin: 0;
+    border: 1px solid #93c7e7;
+  }
+  
+  .list-container__list-options {
+    text-align: right;
+    width: 80%;
+    cursor: pointer;
+  }
+  #angle-down {
+    display: inline-block;
+    padding: 0 0.3rem;
+  }
+  
+  .list-container__create-list__button,
+  .list-container__list-options,
+  #angle-down {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  
+  .list-container__box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .list-container__lists {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 0.5rem;
+  }
+  
+  .list-container__list {
+    min-height: 20vh;
+    background: white;
+    width: 22.5%;
+    margin: 0.8rem 1.25%;
+    overflow: hidden;
+    /* position: relative; */
+    /* display: inline-block; */
+    float: left;
+    border-radius: 6px;
+  
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .list-container__create-list-type {
+    cursor: pointer;
+  
+    vertical-align: middle;
+    display: inline-block;
+  }
+  
+  .list-container__create-list-name {
+    padding: 0.5rem;
+  }
+  
+  .list-container__create-list-options {
+    position: relative;
+    text-align: right;
+    float: right;
+    margin: 0;
+    padding: 0.5rem 0.5rem;
+  }
+  
+  .list-container__create-list-options,
+  .list-container__create-list-name {
+    display: inline-block;
+  }
+  
+  .select-mode {
+    position: absolute;
+  
+    right: 0;
+    padding: 0;
+    text-align: left;
+    margin-right: 1.5rem;
+  }
+  
+  .select-mode_type {
+    background: rgb(215, 230, 226);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0 0.4rem;
+  }
+  
+  .select-mode_type:hover {
+    background: rgb(162, 216, 238);
+  }
+  
+  .create-list-box {
+    background: #ffffff;
+    border: 1px solid #4dd0e1;
+    box-shadow: none;
+    margin: auto;
+    padding: 0 0.5rem;
+    width: 95%;
+    height: 2rem;
+  }
+  
+  .list-container__cancel-list__button,
+  .list-container__save-list__button {
+    display: inline-block;
+    color: white;
+    margin: 0.5rem;
+    padding: 0.1rem 0.8rem;
+    border-radius: 17px;
+    outline: none;
+    float: right;
+    font-size: 0.8rem;
+  }
+  .list-container__cancel-list__button {
+    background: #ff8383;
+    border: #05b932;
+  }
+  .list-container__save-list__button {
+    background: #02caa9;
+    border: #02caa9;
+  }
+  
+  .list-container__list-name {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    margin: 0.4rem 1rem;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .list-container__options {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+  
+    margin: 0.4rem 0.4rem;
+    float: right;
+  }
+  
+  .undo-task {
+    color: rgb(49, 171, 252);
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .add-task {
+    color: rgb(19, 204, 2);
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .list-container__task {
+    background: #ffffff;
+    height: 15vh;
+    margin: 0.2rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .list-container__add-task {
+    display: inline-block;
+    padding-left: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .create-task-box {
+    background: #ffffff;
+    border: 1px solid #4dd0e1;
+    box-shadow: none;
+    margin-left: 5%;
+    padding: 0 0.5rem;
+    width: 90%;
+    height: 1.8rem;
+  }
+  .del-list {
+    color: rgb(185, 7, 7);
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .dialog-box {
+    margin-top: 10rem;
+    min-height: 10rem;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .btn-wrapper {
+    text-align: center;
+  }
+  
+  .dialog-box__yes,
+  .dialog-box__no {
+    width: 5rem;
+    outline: none;
+    color: white;
+    margin: 1rem 0.5rem;
+    display: inline-block;
+    border-radius: 17px;
+  }
+  .dialog-box__yes {
+    background: #1db39a;
+    border: #1db39a;
+  }
+  
+  .dialog-box__no {
+    background: #ff8383;
+    border: #ff8383;
+  }
+  
+  .all-tasks__container {
+    padding: 0.2rem 0.5rem;
+    margin: 0.4rem 0.2rem;
+    border-radius: 5px;
+    background: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 2px 6px 0 rgba(104, 102, 102, 0.2),
+      0 4px 18px 0 rgba(92, 90, 90, 0.19);
+  }
+  
+  .task-name {
+    display: inline-block;
+    width: 60%;
+  }
+  
+  .task__options {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    float: right;
+  }
+  
+  .add-sub-task {
+  }
+  
+  .list-container__add-sub-task {
+    display: inline-block;
+    padding-left: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .sub-task-container {
+    padding: 0.2rem 0.5rem;
+    margin: 0.4rem 0.2rem;
+    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: 0 2px 6px 0 rgba(104, 102, 102, 0.2),
+      0 4px 18px 0 rgba(92, 90, 90, 0.19);
+  }
+  .sub-task-name {
+    display: inline-block;
+  }
+  
+  .sub-task__options {
+    display: inline-block;
+    float: right;
+  }
+  
