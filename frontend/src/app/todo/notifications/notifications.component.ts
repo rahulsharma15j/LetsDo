@@ -32,9 +32,6 @@ export class NotificationsComponent implements OnInit {
     this.userId = Cookie.get("receiverId");
     this.userName = Cookie.get("receiverName");
     this.getNotifications();
-    this.listUpdateNotification();
-    this.taskUpdateNotification();
-    this.subTakUpdateNotification();
   }
 
   public getNotifications(): any {
@@ -43,12 +40,13 @@ export class NotificationsComponent implements OnInit {
         if (response.status === 200) {
           this.allNotifications = response.data;
         } else {
+          this.allNotifications = [];
           this.toastr.warning(response.message);
         }
       },
       err => {
+        this.allNotifications = [];
         this.toastr.error("Error Occoured");
-
         this.router.navigate(["/error"]);
       }
     );
@@ -63,59 +61,15 @@ export class NotificationsComponent implements OnInit {
             this.toastr.success(response.message);
             this.getNotifications();
           } else {
+            this.allNotifications = [];
             this.toastr.warning(response.message);
           }
         },
         err => {
+          this.allNotifications = [];
           this.toastr.error("Error Occoured");
-
           this.router.navigate(["/error"]);
         }
       );
-  }
-
-  public subTakUpdateNotification(): any {
-    this.socketService.updateSubtask().subscribe(
-      response => {
-        this.toastr.success(
-          `Subtask ${response.data.data} is updated by ${
-            response.data.creatorName
-          }`
-        );
-      },
-      err => {
-        this.toastr.error("Error Occured");
-      }
-    );
-  }
-
-  public taskUpdateNotification(): any {
-    this.socketService.updateTask().subscribe(
-      response => {
-        this.toastr.success(
-          `Task ${response.data.data} is updated by ${
-            response.data.creatorName
-          }`
-        );
-      },
-      err => {
-        this.toastr.error("Error Occured");
-      }
-    );
-  }
-
-  public listUpdateNotification(): any {
-    this.socketService.updateList().subscribe(
-      response => {
-        this.toastr.success(
-          `List ${response.data.data} is updated by ${
-            response.data.creatorName
-          }`
-        );
-      },
-      err => {
-        this.toastr.error("Error Occured");
-      }
-    );
   }
 }

@@ -25,9 +25,19 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
+  public onClickOnLogo(event): any {
+    event.preventDefault();
+  }
+
   public gotoSignUp(): any {
     setTimeout(() => {
       this.router.navigate(["/"]);
+    }, 500);
+  }
+
+  gotoForgotPassword(): any {
+    setTimeout(() => {
+      this.router.navigate(["/forgot"]);
     }, 500);
   }
 

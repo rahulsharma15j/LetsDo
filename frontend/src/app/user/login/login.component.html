@@ -1,25 +1,20 @@
 <div id="parent">
   <nav class="navbar navbar-expand-sm">
-    <a class="navbar-brand" href="" (click)="onClickOnLink($event)"
+    <a class="navbar-brand" href="" (click)="onClickOnLogo($event)"
       ><h3>LetsDo</h3></a
     >
-    
-    <div class="collapse navbar-collapse"  >
+
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item ml-auto">
-          <a
-            class="nav-link"
-            (click)="gotoSignUp()"
-            
-            >SIGNUP</a
-          >
+          <a class="nav-link" (click)="gotoSignUp()">SIGNUP</a>
         </li>
       </ul>
     </div>
     <div class="mobile-nav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item ml-auto">
-          <a class="nav-link"  (click)="gotoSignUp()"> SIGNUP</a>
+          <a class="nav-link" (click)="gotoSignUp()"> SIGNUP</a>
         </li>
       </ul>
     </div>
@@ -59,7 +54,12 @@
           />
         </div>
         <div class="form-group">
-          <a routerLink="/forgot" class="forgot-password">Forgot password?</a>
+          <a
+            routerLink="/forgot"
+            (click)="gotoForgotPassword()"
+            class="forgot-password"
+            >Forgot password?</a
+          >
         </div>
 
         <div class="form-group">

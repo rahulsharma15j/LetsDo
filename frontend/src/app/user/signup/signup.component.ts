@@ -35,6 +35,10 @@ export class SignupComponent implements OnInit {
     this.createCountryList();
   }
 
+  public onClickOnLogo(event): any {
+    event.preventDefault();
+  }
+
   public getCountryPhones(): any {
     this.userService.getCountryNumbers().subscribe(response => {
       this.allCountriesPhones = response;

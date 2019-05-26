@@ -13,6 +13,7 @@ import { NotificationsComponent } from "./todo/notifications/notifications.compo
 import { UserRouteGuard } from "./services/user-route.guard";
 import { ViewFriendListComponent } from "./todo/view-friend-list/view-friend-list.component";
 import { RootComponent } from "./todo/root/root.component";
+import { AppRouteGuard } from "./services/app-route.guard";
 
 const routes: Routes = [
   { path: "", component: SignupComponent },
@@ -23,9 +24,18 @@ const routes: Routes = [
   {
     path: "root",
     component: RootComponent,
+    canActivate: [AppRouteGuard],
     children: [
-      { path: "user/list", component: SingleUserComponent },
-      { path: "friends", component: FriendsComponent },
+      {
+        path: "user/list",
+
+        component: SingleUserComponent
+      },
+      {
+        path: "friends",
+
+        component: FriendsComponent
+      },
       {
         path: "notifications",
 
@@ -33,6 +43,7 @@ const routes: Routes = [
       },
       {
         path: "view/friend/:friendId",
+
         component: ViewFriendListComponent
       }
     ]

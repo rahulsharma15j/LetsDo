@@ -53,10 +53,12 @@ label {
 }
 
 .forgot-password {
-  margin-left: 70%;
+  float: right;
+  margin: 0.5rem 0;
   color: #63a088;
   text-decoration: none;
   font-size: 0.9rem;
+  cursor: pointer;
 }
 
 .part-1 {
@@ -111,7 +113,7 @@ button {
     0 0 8px rgba(102, 175, 233, 0.6);
 }
 
-.mobile-nav{
+.mobile-nav {
   display: none;
 }
 
@@ -123,16 +125,14 @@ button {
   color: white;
 }
 @media screen and (max-width: 573px) {
-  .mobile-nav{
+  .mobile-nav {
     display: block;
   }
-  .collapse .navbar-collapse{
-    display:  none;
+  .collapse .navbar-collapse {
+    display: none;
   }
-   
 }
 @media screen and (min-height: 663px) {
-  
   .name-box {
     width: 100%;
   }
@@ -147,7 +147,6 @@ button {
 }
 
 @media screen and (max-width: 767px) {
-   
   .form-div {
     width: 90%;
     margin-left: 5%;
@@ -156,18 +155,14 @@ button {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  
   .form-div {
-     
     width: 55%;
     margin: 10% auto;
   }
 }
 
 @media screen and (max-width: 1025px) {
-  
   .form-div {
     margin-top: 10%;
-    
   }
 }

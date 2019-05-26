@@ -96,6 +96,7 @@
 }
 
 .toggle-button {
+  float: right;
   width: 2.5rem;
   background: transparent;
   border: none;
@@ -160,6 +161,7 @@
   .mobile-search-box,
   .toggle-button {
     display: inline-block;
+    right: 0;
   }
 
   .navbar-brand .brand {

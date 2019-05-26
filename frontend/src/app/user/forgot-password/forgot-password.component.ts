@@ -19,6 +19,18 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit() {}
 
+  public onClickOnLogo(event): any {
+    event.preventDefault();
+  }
+
+  public gotoLogIn(): any {
+    this.router.navigate(["/login"]);
+  }
+
+  public gotoSignUp(): any {
+    this.router.navigate(["/"]);
+  }
+
   public sendRecoveryEmail(): any {
     if (!this.email) {
       this.toastr.warning("PLEASE ENTER YOUR EMAIL ");

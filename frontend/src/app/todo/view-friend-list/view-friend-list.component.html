@@ -1,48 +1,3 @@
-<nav class="navbar navbar-expand-sm">
-  <a class="navbar-brand" href="" (click)="onClickOnLink($event)"
-    ><h3>LetsDo</h3></a
-  >
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navItems"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navItems">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item ml-auto">
-        <form class="form-inline">
-          <input
-            class="form-control search-box mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-        </form>
-      </li>
-      <li class="nav-item ml-auto">
-        <a class="nav-link" (click)="onClickOnFriends()"
-          ><i class="fas fa-user-friends"></i
-        ></a>
-      </li>
-      <li class="nav-item ml-auto">
-        <a class="nav-link" (click)="onClickOnNotifications()"
-          ><i class="fas fa-bell"></i
-        ></a>
-      </li>
-      <li class="nav-item ml-auto">
-        <a class="nav-link" (click)="onClick()">{{ userName }}</a>
-      </li>
-      <li class="nav-item ml-auto">
-        <a class="nav-link" (click)="onClick()"
-          ><i class="fa fa-power-off" aria-hidden="true"></i
-        ></a>
-      </li>
-    </ul>
-  </div>
-</nav>
 <div class="list-container">
   <div>
     <div class="list-container__create-list__button">
@@ -81,12 +36,13 @@
         </div>
         <!--Edit list ends-->
         <div *ngIf="!showList || list.listId !== listId">
-          <div class="list-container__list-name">
-            {{ list.listName }}
-          </div>
           <div class="list-container__options">
             <i class="fas fa-undo undo-task"></i>
             <i class="far fa-edit" (click)="onClickOnEditList(list)"></i>
+          </div>
+          <hr class="" id="hr" />
+          <div class="list-container__list-name">
+            {{ list.listName }}
           </div>
         </div>
 
@@ -118,14 +74,14 @@
             </div>
             <!--Edit task ends-->
             <div *ngIf="showTask || task.itemId !== taskId">
-              <div class="task-name">{{ task?.itemName }}</div>
-
               <div class="task__options">
                 <i
                   class="far fa-edit"
                   (click)="onClickOnEditTask(task, list)"
                 ></i>
               </div>
+              <hr class="" id="hr" />
+              <div class="task-name">{{ task?.itemName }}</div>
             </div>
 
             <div

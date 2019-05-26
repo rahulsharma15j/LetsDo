@@ -1,25 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'my-nav',
-  templateUrl: './my-nav.component.html',
-  styleUrls: ['./my-nav.component.css']
+  selector: "my-nav",
+  templateUrl: "./my-nav.component.html",
+  styleUrls: ["./my-nav.component.css"]
 })
 export class MyNavComponent implements OnInit {
-  public authToken:string;
-  constructor(public router:Router) { }
+  public authToken: string;
+  constructor(public router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+  public onClickOnLogo(event): any {
+    event.preventDefault();
   }
-
-  public gotoHome(){
-   if(this.authToken){
-    this.router.navigate(['/root/user/list']);
-   }else{
-    this.router.navigate(['/']);
-   }
-  
+  public gotoHome() {
+    if (this.authToken) {
+      this.router.navigate(["/root/user/list"]);
+    } else {
+      this.router.navigate(["/"]);
+    }
   }
-
 }

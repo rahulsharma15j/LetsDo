@@ -10,7 +10,7 @@ export class NotFoundComponent implements OnInit {
   constructor(private location: Location) {}
 
   ngOnInit() {}
-  onClickOnLink(event) {
+  public onClickOnLogo(event): any {
     event.preventDefault();
   }
 

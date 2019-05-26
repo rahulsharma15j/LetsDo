@@ -49,6 +49,9 @@ export class RootComponent implements OnInit {
     this.userInfo = this.userService.getUserInfoFromLocalStorage();
     this.list = true;
     this.verifyUser();
+    this.listUpdateNotification();
+    this.taskUpdateNotification();
+    this.subTakUpdateNotification();
     this.userService.viewFriendList.subscribe(val => {
       console.log(val);
       if (val == "list") {
@@ -126,6 +129,39 @@ export class RootComponent implements OnInit {
       err => {
         this.toastr.error("Some error occurred.", "ERROR");
         this.router.navigate(["/error"]);
+      }
+    );
+  }
+
+  public subTakUpdateNotification(): any {
+    this.socketService.updateSubtask().subscribe(
+      response => {
+        this.toastr.success(response.data);
+      },
+      err => {
+        this.toastr.error("Error Occured");
+      }
+    );
+  }
+
+  public taskUpdateNotification(): any {
+    this.socketService.updateTask().subscribe(
+      response => {
+        this.toastr.success(response.data);
+      },
+      err => {
+        this.toastr.error("Error Occured");
+      }
+    );
+  }
+
+  public listUpdateNotification(): any {
+    this.socketService.updateList().subscribe(
+      response => {
+        this.toastr.success(response.data);
+      },
+      err => {
+        this.toastr.error("Error Occured");
       }
     );
   }
