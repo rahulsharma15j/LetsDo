@@ -1,5 +1,5 @@
 <div class="btn-container">
-  <button (click)="onClickSentReq()" class="button">
+  <button (click)="onClickSentReq()" class="sent_button">
     Sent Requests
   </button>
 
@@ -12,7 +12,7 @@
 <div class="user-list__container">
   <!--users list-->
   <div class="user-list" *ngIf="findFriends">
-    <h5 style="text-align:center">Friends list</h5>
+    <div class="fr-list__heading">Friends list</div>
     <hr />
     <div *ngFor="let friend of allFriendsList">
       <div class="user-details" *ngIf="friend.friendId !== userId">
@@ -33,7 +33,8 @@
   <!--users list end-->
   <!--users list-->
   <div class="user-list" *ngIf="findFriends">
-    <h5 style="text-align:center">Users you may know</h5>
+    <div class="fr-list__heading">Users you may know</div>
+
     <hr />
     <div *ngFor="let user of allUsersList">
       <div class="user-details" *ngIf="user.userId !== userId">
@@ -55,7 +56,8 @@
 
   <!--Sent Requests-->
   <div class="user-list" *ngIf="cancelRequest">
-    <h5 style="text-align:center">All Sent Requests</h5>
+    <div class="fr-list__heading">All Sent Requests</div>
+
     <hr />
     <div *ngFor="let request of allSentRequestsList">
       <div class="user-details">
@@ -69,7 +71,7 @@
           class="button cancel-friend__req"
           (click)="cancelFriendRequest(request)"
         >
-          Cancel Request
+          Cancel
         </button>
       </div>
     </div>
@@ -78,7 +80,7 @@
 
   <!--Received Requests-->
   <div class="user-list" *ngIf="receivedRequest">
-    <h5 style="text-align:center">All Received Requests</h5>
+    <div class="fr-list__heading">All Received Requests</div>
     <hr />
     <div *ngFor="let request of allReceivedRequestsList">
       <div class="user-details">
@@ -92,13 +94,13 @@
           class="button accept-friend__req"
           (click)="acceptFriendRequest(request)"
         >
-          Accept Request
+          Accept
         </button>
         <button
           class="button reject-friend__req"
           (click)="rejectFriendRequest(request)"
         >
-          Reject Request
+          Reject
         </button>
       </div>
     </div>

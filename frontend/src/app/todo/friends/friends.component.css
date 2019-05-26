@@ -32,6 +32,11 @@
   background: rgb(195, 236, 195);
 }
 
+.fr-list__heading {
+  font-size: 1rem;
+  text-align: center;
+}
+
 .first-char__circle {
   background: #7b8083;
   height: 3rem;
@@ -50,12 +55,9 @@
 .button {
   width: 10rem;
   height: 2rem;
-
-  display: inline-block;
   float: right;
   color: white;
   border-radius: 17px;
-  margin: 0.5rem 0.5rem;
 }
 .add-friend__btn {
   background: #3d5a6c;
@@ -74,6 +76,10 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.accept-friend__req,
+.reject-friend__req {
+  margin: 0;
+}
 .reject-friend__req {
   background: #f89b9bde;
   border: #f89b9bde;
@@ -96,7 +102,60 @@
   cursor: pointer;
 }
 
+.btn-container {
+  width: 100%;
+}
+
+.sent_button,
+.rec_button {
+  width: 40%;
+  display: inline-block;
+  background: #1db39a;
+  border: #1db39a;
+  color: white;
+  margin: 0.5rem 0.5rem;
+  padding: 0.2rem 0.2rem;
+  border-radius: 17px;
+  outline: none;
+  font-size: 0.8rem;
+}
+.rec_button {
+  float: right;
+}
+
+.rec_button:hover,
+.sent_button:hover {
+  background: #04d183;
+  border: #04d183;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+hr {
+  margin: 0;
+  border: 1px solid #93c7e7;
+}
+
+#footer {
+  text-align: center;
+  background: rgb(5, 92, 107);
+  height: 40px;
+  padding: 0.5rem;
+  color: white;
+}
+
 @media screen and (max-width: 640px) {
+  .user-list__container {
+    padding: 0;
+  }
+  .user-list {
+    width: 95%;
+    margin: 1rem 2.5%;
+    padding: 0.5rem;
+  }
+  .user-details {
+    margin: 0.5rem 0;
+    position: relative;
+  }
   .first-char__circle {
     background: #7b8083;
     height: 2rem;
@@ -121,48 +180,20 @@
     float: right;
     color: white;
     border-radius: 17px;
-    margin: 0.7rem 0.5rem;
+  }
+  .accept-friend__req,
+  .reject-friend__req {
+    position: absolute;
+    right: 0.5rem;
+  }
+  .accept-friend__req {
+    top: 0.3rem;
+  }
+  .reject-friend__req {
+    top: 2.1rem;
   }
   .add-friend__btn {
     background: #3d5a6c;
     border: #3d5a6c;
   }
-}
-
-.btn-container {
-  display: inline-block;
-  width: 100%;
-}
-
-.button,
-.rec_button {
-  display: inline-block;
-  background: #1db39a;
-  border: #1db39a;
-  color: white;
-  margin: 0.5rem 1.5rem;
-  padding: 0.3rem 1.5rem;
-  border-radius: 17px;
-  outline: none;
-  font-size: 0.9rem;
-}
-
-.rec_button:hover,
-.button:hover {
-  background: #04d183;
-  border: #04d183;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-hr {
-  margin: 0;
-  border: 1px solid #93c7e7;
-}
-
-#footer {
-  text-align: center;
-  background: rgb(5, 92, 107);
-  height: 40px;
-  padding: 0.5rem;
-  color: white;
 }

@@ -8,9 +8,9 @@
 }
 
 .list-container__search-box {
-  width: 50%;
+  width: 60%;
   height: 2rem;
-  margin: 0 0 0 12.5%;
+  margin: 0 2rem;
   padding-left: 0.9rem;
   background: #ffffff;
   color: black;
@@ -433,6 +433,9 @@
 }
 
 @media screen and (max-width: 964px) {
+  .list-container__search-box-container {
+    width: 50%;
+  }
   #brand,
   #nav-bar {
     display: none;
@@ -464,6 +467,26 @@
 }
 
 @media screen and (max-width: 640px) {
+  .list-container__search-box-container {
+    width: 40%;
+    margin: 0.2rem 0.4rem;
+  }
+  .list-container__search-box {
+    width: 100%;
+    margin: 0;
+  }
+
+  .list-container__create-list__button {
+    font-size: 0.8rem;
+
+    margin: 0.5rem 0;
+    padding: 0.3rem 1rem;
+  }
+  .list-container__list-options {
+    margin: 0.5rem 0;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+  }
   .list-container__list {
     width: 90%;
     margin: 0.8rem 5%;
