@@ -156,7 +156,7 @@ export class ViewFriendListComponent implements OnInit {
   }
 
   public getAllList(): any {
-    this.listService.getAllList(this.friendId, this.authToken).subscribe(
+    this.listService.getAllPublicList(this.friendId, this.authToken).subscribe(
       response => {
         if (response.status === 200) {
           this.allLists = response.data;

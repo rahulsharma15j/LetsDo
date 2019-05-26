@@ -30,13 +30,12 @@ const routes: Routes = [
         path: "notifications",
 
         component: NotificationsComponent
+      },
+      {
+        path: "view/friend/:friendId",
+        component: ViewFriendListComponent
       }
     ]
-  },
-
-  {
-    path: "view/friend/:friendId",
-    component: ViewFriendListComponent
   },
   { path: "error", component: InternalErrorComponent },
   { path: "", redirectTo: "/", pathMatch: "full" },

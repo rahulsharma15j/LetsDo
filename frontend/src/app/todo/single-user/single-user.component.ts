@@ -38,6 +38,7 @@ export class SingleUserComponent implements OnInit {
   public editSubTask: boolean = false;
   public showTask: boolean = false;
   public showList: boolean = false;
+  public dropDownListType: boolean = false;
   public listId: string;
   public taskId: string;
   public subTaskId: string;
@@ -47,6 +48,7 @@ export class SingleUserComponent implements OnInit {
   public showListType = ["All Lists", "Public", "Private"];
   public listMode = ["Public", "Private"];
   public selectedListMode: string = "";
+  public listModeType: string = "";
   list: any;
 
   constructor(
@@ -63,12 +65,28 @@ export class SingleUserComponent implements OnInit {
     this.userName = Cookie.get("receiverName");
     this.userInfo = this.userService.getUserInfoFromLocalStorage();
     this.selectedListMode = this.listMode[1];
-
+    this.listModeType = this.showListType[0];
     this.verifyUser();
     this.getAllList();
     this.listUpdateNotification();
     this.taskUpdateNotification();
     this.subTakUpdateNotification();
+  }
+
+  public onSelectListType(): any {
+    this.dropDownListType = true;
+  }
+
+  public onSelectModeOfList(mode): any {
+    this.listModeType = mode;
+    this.dropDownListType = false;
+    if (this.listModeType === "Public") {
+      this.getAllPublicList();
+    } else if (this.listModeType === "Private") {
+      this.getAllPrivateList();
+    } else {
+      this.getAllList();
+    }
   }
 
   public mobileNavHandler(): any {
@@ -79,14 +97,6 @@ export class SingleUserComponent implements OnInit {
   public closeMobileNav(): any {
     $(".backdrop").fadeOut(100);
     $(".mobile-nav").fadeOut(300);
-  }
-
-  public onClickOnFriends(): any {
-    this.router.navigate(["/friends"]);
-  }
-
-  public onClickOnNotifications(): any {
-    this.router.navigate(["/notifications"]);
   }
 
   public onClickOnCreateList(): any {
@@ -216,6 +226,56 @@ export class SingleUserComponent implements OnInit {
     );
   }
 
+  public getAllPublicList(): any {
+    this.listService.getAllPublicList(this.userId, this.authToken).subscribe(
+      response => {
+        if (response.status === 200) {
+          this.allLists = response.data;
+          if (this.allLists) {
+            for (let list of this.allLists) {
+              this.getAllTask(list);
+            }
+          } else {
+            this.allLists.length = 0;
+          }
+        } else {
+          this.toastr.warning(response.message);
+          this.allLists.length = 0;
+        }
+      },
+      err => {
+        this.toastr.error("Error Occoured");
+        this.allLists.length = 0;
+        this.router.navigate(["/error"]);
+      }
+    );
+  }
+
+  public getAllPrivateList(): any {
+    this.listService.getAllPrivateList(this.userId, this.authToken).subscribe(
+      response => {
+        if (response.status === 200) {
+          this.allLists = response.data;
+          if (this.allLists) {
+            for (let list of this.allLists) {
+              this.getAllTask(list);
+            }
+          } else {
+            this.allLists.length = 0;
+          }
+        } else {
+          this.toastr.warning(response.message);
+          this.allLists.length = 0;
+        }
+      },
+      err => {
+        this.toastr.error("Error Occoured");
+        this.allLists.length = 0;
+        this.router.navigate(["/error"]);
+      }
+    );
+  }
+
   public createNewList(): any {
     if (!this.listName) {
       this.toastr.warning("PLEASE ENTER LIST NAME");
@@ -226,7 +286,7 @@ export class SingleUserComponent implements OnInit {
         creatorName: this.userName,
         modifierId: this.userId,
         modifierName: this.userName,
-        mode: this.listMode
+        mode: this.selectedListMode.toLowerCase()
       };
 
       this.listService.createList(newList, this.authToken).subscribe(

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Subject, Observable } from "rxjs";
+import { Subject, Observable, BehaviorSubject } from "rxjs";
 
 import { HttpParams, HttpClient } from "@angular/common/http";
 
@@ -8,7 +8,9 @@ import { HttpParams, HttpClient } from "@angular/common/http";
 })
 export class UserService {
   public baseUrl: string = "http://localhost:3000/api/v1";
-  public popup: Subject<any> = new Subject<any>();
+  public viewFriendList: Subject<any> = new Subject<any>();
+  private friendId = new BehaviorSubject("");
+  selectedFriendId = this.friendId.asObservable();
 
   public userType: any = "";
   public passwordRegex = /^[A-Za-z0-9]\w{7,}$/;
@@ -16,6 +18,10 @@ export class UserService {
   public emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   constructor(private http: HttpClient) {}
+
+  public viewFriend(userId: any): any {
+    this.friendId.next(userId);
+  }
 
   /**
    * Setting user information to local storage.

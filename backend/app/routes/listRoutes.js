@@ -30,6 +30,17 @@ module.exports.setRouter = app => {
     auth.isAuthorized,
     listController.getAllLists
   );
+
+  app.get(
+    `${baseUrl}/view/all/public/:userId`,
+    auth.isAuthorized,
+    listController.getAllPublicLists
+  );
+  app.get(
+    `${baseUrl}/view/all/private/:userId`,
+    auth.isAuthorized,
+    listController.getAllPrivateLists
+  );
   app.get(
     `${baseUrl}/details/:listId`,
     auth.isAuthorized,

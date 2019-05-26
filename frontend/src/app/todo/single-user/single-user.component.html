@@ -6,9 +6,6 @@
         class="list-container__search-box"
         placeholder="Search any list..."
       />
-      <button class="list-container__search__button">
-        Search
-      </button>
     </div>
 
     <div class="list-container__create-btn-container">
@@ -21,17 +18,20 @@
     </div>
 
     <div class="list-container__list-options">
-      <div class="list-container__list-type" (click)="onSelectListType()">
-        All Lists
-        <div class="select-mode" *ngIf="dropDown">
-          <div class="select-mode_type" *ngFor="let mode of listMode">
-            <div *ngIf="mode != selectedListMode" (click)="onSelectMode(mode)">
-              {{ mode }}
-            </div>
+      <div
+        class="list-container__create-list-type"
+        (click)="onSelectListType()"
+      >
+        {{ listModeType }}
+      </div>
+      <i id="angle-down" class="fas fa-angle-down"></i>
+      <div class="select-mode" *ngIf="dropDownListType">
+        <div class="select-mode_type" *ngFor="let mode of showListType">
+          <div *ngIf="mode !== listModeType" (click)="onSelectModeOfList(mode)">
+            {{ mode }}
           </div>
         </div>
       </div>
-      <i id="angle-down" class="fas fa-angle-down"></i>
     </div>
   </div>
   <hr />

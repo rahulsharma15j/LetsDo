@@ -15,34 +15,14 @@
   background: #ffffff;
   color: black;
   border: 1px solid #4dd0e1;
-  border-right: none;
   box-shadow: none;
-  border-radius: 17px 0 0 17px;
+  border-radius: 17px;
   outline: none;
   vertical-align: middle;
 }
 
 .list-container__search-box::placeholder {
   font-size: 0.9rem;
-}
-
-.list-container__search__button {
-  background: #1db39a;
-  border: #1db39a;
-  padding: 0 1rem;
-  color: white;
-  font-size: 0.9rem;
-  margin-top: 0;
-  height: 2rem;
-  border-radius: 0 17px 17px 0;
-  outline: none;
-  vertical-align: middle;
-}
-
-.list-container__search__button:hover {
-  background: #04d183;
-  border: #04d183;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .list-container {
@@ -85,6 +65,7 @@
 .list-container__list-type {
   display: inline-block;
   padding: 0;
+  margin: 0;
 }
 #angle-down {
   display: inline-block;
@@ -148,6 +129,26 @@
 .list-container__create-list-options,
 .list-container__create-list-name {
   display: inline-block;
+}
+
+.list-select-mode {
+  position: absolute;
+
+  right: 0;
+  padding: 0;
+  text-align: left;
+  margin-right: 2.5rem;
+}
+
+.list-select-mode_type {
+  background: rgb(215, 230, 226);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0 0.4rem;
+}
+
+.list-select-mode_type:hover {
+  background: rgb(162, 216, 238);
 }
 
 .select-mode {

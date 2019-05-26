@@ -16,6 +16,18 @@ export class ListService {
     );
   }
 
+  public getAllPublicList(userId, authToken): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}/lists/view/all/public/${userId}?authToken=${authToken}`
+    );
+  }
+
+  public getAllPrivateList(userId, authToken): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}/lists/view/all/private/${userId}?authToken=${authToken}`
+    );
+  }
+
   public getAllNotifications(userId, authToken): Observable<any> {
     return this.http.get(
       `${

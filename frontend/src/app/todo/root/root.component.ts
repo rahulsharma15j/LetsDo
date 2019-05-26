@@ -22,13 +22,25 @@ export class RootComponent implements OnInit {
   public list: boolean = false;
   public friends: boolean = false;
   public notifications: boolean = false;
+  public viewFriend: boolean = false;
+
   constructor(
     public userService: UserService,
     public socketService: SocketService,
     private toastr: ToastrService,
     public listService: ListService,
     public router: Router
-  ) {}
+  ) {
+    this.userService.viewFriendList.subscribe(val => {
+      if (val == "list") {
+        this.friends = false;
+        this.list = false;
+        this.notifications = false;
+        this.viewFriend = true;
+        this.router.navigate(["/root/user/list"]);
+      }
+    });
+  }
 
   ngOnInit() {
     this.authToken = Cookie.get("authToken");
@@ -37,6 +49,18 @@ export class RootComponent implements OnInit {
     this.userInfo = this.userService.getUserInfoFromLocalStorage();
     this.list = true;
     this.verifyUser();
+    this.userService.viewFriendList.subscribe(val => {
+      console.log(val);
+      if (val == "list") {
+        this.userService.selectedFriendId.subscribe(friendId => {
+          this.friends = false;
+          this.list = false;
+          this.notifications = false;
+          this.viewFriend = true;
+          this.router.navigate([`/root/view/friend/${friendId}`]);
+        });
+      }
+    });
   }
   onClickOnLink(event) {
     event.preventDefault();

@@ -25,15 +25,28 @@ let getAllLists = (req, res) => {
     });
 };
 
-/**
- * This function returns all public lists.
- */
 let getAllPublicLists = (req, res) => {
-  listLib
-    .findUser(req)
+  userLib
+    .findUserById(req.params.userId)
     .then(listLib.findPublicLists)
     .then(result => {
-      res.send(response.generate(false, "List found and listed."));
+      res.send(
+        response.generate(false, "Public List found and listed.", 200, result)
+      );
+    })
+    .catch(err => {
+      res.send(err);
+    });
+};
+
+let getAllPrivateLists = (req, res) => {
+  userLib
+    .findUserById(req.params.userId)
+    .then(listLib.findPrivateLists)
+    .then(result => {
+      res.send(
+        response.generate(false, "Private List found and listed.", 200, result)
+      );
     })
     .catch(err => {
       res.send(err);
@@ -181,6 +194,7 @@ let deleteNotification = (req, res) => {
 module.exports = {
   getAllLists: getAllLists,
   getAllPublicLists: getAllPublicLists,
+  getAllPrivateLists: getAllPrivateLists,
   getList: getList,
   deleteList: deleteList,
   updateList: updateList,

@@ -29,6 +29,26 @@ let findLists = userDetails => {
   });
 };
 
+let findPrivateLists = userDetails => {
+  return new Promise((resolve, reject) => {
+    List.find({ creatorId: userDetails.userId, mode: "private" })
+      .select("-_id -__v")
+      .sort("-createdOn")
+      .lean()
+      .exec((err, listDetails) => {
+        if (err) {
+          logger.error(err.message, "listLib: findLists()", 10);
+          reject(response.generate(true, "Failed to find lists.", 500, null));
+        } else if (check.isEmpty(listDetails)) {
+          logger.info("list not found.", "listLib: findLists()", 7);
+          reject(response.generate(true, "list not found.", 404, null));
+        } else {
+          resolve(listDetails);
+        }
+      });
+  });
+};
+
 let findPublicLists = userDetails => {
   return new Promise((resolve, reject) => {
     List.find({ creatorId: userDetails.userId, mode: "public" })
@@ -145,6 +165,7 @@ module.exports = {
   findLists: findLists,
   findSingleList: findSingleList,
   findPublicLists: findPublicLists,
+  findPrivateLists: findPrivateLists,
   update: update,
   create: create,
   findNotifications: findNotifications

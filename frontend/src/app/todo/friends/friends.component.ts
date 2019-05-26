@@ -93,9 +93,6 @@ export class FriendsComponent implements OnInit {
     this.router.navigate(["/notifications"]);
   }
 
-  public onSelectedFriend(friend): any {
-    this.router.navigate([`/view/friend/${friend.friendId}`]);
-  }
   public getAllUsers(): any {
     this.userService.getAllUsers(this.authToken).subscribe(
       response => {
@@ -336,5 +333,10 @@ export class FriendsComponent implements OnInit {
         this.toastr.error("Error Occured");
       }
     );
+  }
+
+  public gotoFriendList(friend): any {
+    this.userService.viewFriendList.next("list");
+    this.userService.viewFriend(friend.friendId);
   }
 }
