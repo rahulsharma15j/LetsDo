@@ -44,9 +44,6 @@ export class FriendsComponent implements OnInit {
     this.getAllSentRequests();
     this.getAllReceivedRequests();
     this.getAllFriends();
-    this.listUpdateNotification();
-    this.taskUpdateNotification();
-    this.subTakUpdateNotification();
   }
 
   public mobileNavHandler(): any {
@@ -286,51 +283,6 @@ export class FriendsComponent implements OnInit {
         this.toastr.error("Error Occoured");
 
         this.router.navigate(["/error"]);
-      }
-    );
-  }
-
-  public subTakUpdateNotification(): any {
-    this.socketService.updateSubtask().subscribe(
-      response => {
-        this.toastr.success(
-          `Subtask ${response.data.data} is updated by ${
-            response.data.creatorName
-          }`
-        );
-      },
-      err => {
-        this.toastr.error("Error Occured");
-      }
-    );
-  }
-
-  public taskUpdateNotification(): any {
-    this.socketService.updateTask().subscribe(
-      response => {
-        this.toastr.success(
-          `Task ${response.data.data} is updated by ${
-            response.data.creatorName
-          }`
-        );
-      },
-      err => {
-        this.toastr.error("Error Occured");
-      }
-    );
-  }
-
-  public listUpdateNotification(): any {
-    this.socketService.updateList().subscribe(
-      response => {
-        this.toastr.success(
-          `List ${response.data.data} is updated by ${
-            response.data.creatorName
-          }`
-        );
-      },
-      err => {
-        this.toastr.error("Error Occured");
       }
     );
   }

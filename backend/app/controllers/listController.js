@@ -109,7 +109,7 @@ let updateList = (req, res) => {
         data: `List "${req.list.listName}" is updated by "${
           req.body.modifierName
         }"`,
-        type: "Update-list"
+        type: "Update-user"
       };
       notification.createNotification(obj);
       res.send(response.generate(false, "List updated.", 200, null));

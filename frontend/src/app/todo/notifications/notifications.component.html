@@ -1,7 +1,7 @@
 <div class="user-list__container">
   <!--Notification start-->
   <div class="user-list">
-    <h5 style="text-align:center">All Notifications</h5>
+    <div class="fr-list__heading">Notifications</div>
     <hr />
     <div class="user-details" *ngFor="let notification of allNotifications">
       <div class="notification-desc">
@@ -9,7 +9,7 @@
       </div>
 
       <button
-        class="button delete-noti__btn"
+        class="delete-noti__btn"
         (click)="deleteNotification(notification.notificationId)"
       >
         Delete

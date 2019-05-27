@@ -9,6 +9,7 @@ import { HttpParams, HttpClient } from "@angular/common/http";
 export class UserService {
   public baseUrl: string = "http://localhost:3000/api/v1";
   public viewFriendList: Subject<any> = new Subject<any>();
+
   private friendId = new BehaviorSubject("");
   selectedFriendId = this.friendId.asObservable();
 

@@ -10,7 +10,7 @@ import { UserService } from "src/app/services/user.service";
 })
 export class ForgotPasswordComponent implements OnInit {
   public email: any;
-  public isProcessing: boolean = false;
+
   constructor(
     private toastr: ToastrService,
     public userService: UserService,
@@ -37,7 +37,6 @@ export class ForgotPasswordComponent implements OnInit {
     } else if (!this.userService.validateEmail(this.email)) {
       this.toastr.warning("PLEASE ENTER VALID EMAIL");
     } else {
-      this.isProcessing = true;
       let reset = {
         email: this.email
       };
@@ -45,9 +44,10 @@ export class ForgotPasswordComponent implements OnInit {
         response => {
           if (response.status === 200) {
             this.toastr.success("PASSWORD RECOVERY EMAIL SENT");
+            this.router.navigate(["/login"]);
           } else {
             this.toastr.error(`${response.message}`);
-            this.isProcessing = false;
+            this.router.navigate(["/login"]);
           }
         },
         err => {

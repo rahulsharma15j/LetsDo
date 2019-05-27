@@ -64,7 +64,7 @@ let updateItem = (req, res) => {
         data: `Task "${req.body.itemName}" is updated by "${
           req.body.itemModifierName
         }"`,
-        type: "Update-task"
+        type: "Update-user"
       };
       notification.createNotification(obj);
       res.send(response.generate(false, "Item updated.", 200, null));
@@ -281,7 +281,7 @@ let updateSubItem = (req, res) => {
         data: `Subtask "${req.body.subItemName}" is updated by "${
           req.body.subItemModifierName
         }"`,
-        type: "Update-subtask"
+        type: "Update-user"
       };
       notification.createNotification(obj);
       res.send(response.generate(false, "Sub item updated.", 200, null));

@@ -64,25 +64,9 @@ export class SocketService {
     });
   }
 
-  public updateList(): any {
+  public notifyUser(): any {
     return Observable.create(observer => {
-      this.socket.on("Update-list", data => {
-        observer.next(data);
-      });
-    });
-  }
-
-  public updateTask(): any {
-    return Observable.create(observer => {
-      this.socket.on("Update-task", data => {
-        observer.next(data);
-      });
-    });
-  }
-
-  public updateSubtask(): any {
-    return Observable.create(observer => {
-      this.socket.on("Update-subtask", data => {
+      this.socket.on("notify", data => {
         observer.next(data);
       });
     });

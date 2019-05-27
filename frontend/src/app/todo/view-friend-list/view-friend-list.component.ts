@@ -66,9 +66,6 @@ export class ViewFriendListComponent implements OnInit {
     this.verifyUser();
     this.getSingleUser(this.friendId);
     this.getAllList();
-    this.listUpdateNotification();
-    this.taskUpdateNotification();
-    this.subTakUpdateNotification();
   }
 
   public onClickOnFriends(): any {
@@ -320,7 +317,6 @@ export class ViewFriendListComponent implements OnInit {
           this.friendName = `${this.friendDetails.firstName} ${
             this.friendDetails.lastName
           }`;
-          console.log(this.friendName);
         } else {
           this.toastr.warning(response.message);
         }
@@ -329,51 +325,6 @@ export class ViewFriendListComponent implements OnInit {
         this.toastr.error("Error Occoured");
 
         this.router.navigate(["/error"]);
-      }
-    );
-  }
-
-  public subTakUpdateNotification(): any {
-    this.socketService.updateSubtask().subscribe(
-      response => {
-        this.toastr.success(
-          `Subtask ${response.data.data} is updated by ${
-            response.data.creatorName
-          }`
-        );
-      },
-      err => {
-        this.toastr.error("Error Occured");
-      }
-    );
-  }
-
-  public taskUpdateNotification(): any {
-    this.socketService.verifyUser().subscribe(
-      response => {
-        this.toastr.success(
-          `Task ${response.data.data} is updated by ${
-            response.data.creatorName
-          }`
-        );
-      },
-      err => {
-        this.toastr.error("Error Occured");
-      }
-    );
-  }
-
-  public listUpdateNotification(): any {
-    this.socketService.verifyUser().subscribe(
-      response => {
-        this.toastr.success(
-          `List ${response.data.data} is updated by ${
-            response.data.creatorName
-          }`
-        );
-      },
-      err => {
-        this.toastr.error("Error Occured");
       }
     );
   }

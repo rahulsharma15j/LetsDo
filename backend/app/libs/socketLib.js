@@ -63,14 +63,8 @@ let setServer = server => {
     event.on("Welcome", data => {
       socket.emit("Welcome", data);
     });
-    event.on("Update-list", data => {
-      socket.emit("Update-list", data);
-    });
-    event.on("Update-task", data => {
-      socket.emit("Update-task", data);
-    });
-    event.on("Update-subtask", data => {
-      socket.emit("Update-subtask", data);
+    event.on("Update-user", data => {
+      socket.emit("notify", data);
     });
 
     socket.on("disconnect", () => {

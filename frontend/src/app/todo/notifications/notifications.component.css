@@ -1,6 +1,5 @@
 .user-list__container {
-  background: ghostwhite;
-  height: 100vh;
+  height: calc(100vh - 60px);
   width: 100%;
   padding-top: 2rem;
 }
@@ -20,7 +19,6 @@
 }
 
 .user-details {
-  min-height: 10vh;
   background: #dcf5f2;
   padding: 0.5rem;
   border-radius: 6px;
@@ -29,6 +27,11 @@
 
 .user-details:hover {
   background: rgb(195, 236, 195);
+}
+
+.fr-list__heading {
+  font-size: 1rem;
+  text-align: center;
 }
 
 .first-char__circle {
@@ -46,18 +49,16 @@
   display: inline-block;
   margin: 0 1rem;
 }
-.button {
-  width: 10rem;
-  height: 2rem;
-  display: inline-block;
-  float: right;
+.delete-noti__btn {
+  width: 5rem;
+  height: 1.5rem;
+  font-size: 0.8rem;
   color: white;
   border-radius: 17px;
   margin: 0.5rem 0.5rem;
-}
-.delete-noti__btn {
   background: #3d5a6c;
   border: #3d5a6c;
+  float: right;
 }
 .delete-noti__btn:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -90,22 +91,32 @@
 }
 
 @media screen and (max-width: 640px) {
+  .user-list__container {
+    padding: 0;
+  }
+  .user-list {
+    width: 95%;
+    margin: 1rem 2.5%;
+    padding: 0.5rem;
+  }
+  .user-details {
+    margin: 2rem 0;
+  }
   .notification-desc {
+    width: 100%;
     font-size: 0.8rem;
+    margin: 0;
+    text-align: left;
+    padding: 0 0.5rem;
     display: block;
   }
-
-  .button {
-    width: 5rem;
-    height: 1.5rem;
-    font-size: 0.8rem;
-    color: white;
-    border-radius: 17px;
-    margin: 0 0.5rem;
-    margin-top: 0.5rem;
+  hr {
+    margin: 0;
   }
   .delete-noti__btn {
-    background: #3d5a6c;
-    border: #3d5a6c;
+    outline: none;
+    float: none;
+    margin-left: 70%;
+    margin-bottom: 0;
   }
 }

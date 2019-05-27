@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges } from "@angular/core";
 import { UserService } from "src/app/services/user.service";
 import { SocketService } from "src/app/services/socket.service";
 import { ToastrService } from "ngx-toastr";
@@ -13,7 +13,7 @@ declare var $;
   templateUrl: "./root.component.html",
   styleUrls: ["./root.component.css"]
 })
-export class RootComponent implements OnInit {
+export class RootComponent implements OnInit, OnChanges {
   public authToken: string;
   public userId: string;
   public userName: string;
@@ -30,17 +30,7 @@ export class RootComponent implements OnInit {
     private toastr: ToastrService,
     public listService: ListService,
     public router: Router
-  ) {
-    this.userService.viewFriendList.subscribe(val => {
-      if (val == "list") {
-        this.friends = false;
-        this.list = false;
-        this.notifications = false;
-        this.viewFriend = true;
-        this.router.navigate(["/root/user/list"]);
-      }
-    });
-  }
+  ) {}
 
   ngOnInit() {
     this.authToken = Cookie.get("authToken");
@@ -49,22 +39,23 @@ export class RootComponent implements OnInit {
     this.userInfo = this.userService.getUserInfoFromLocalStorage();
     this.list = true;
     this.verifyUser();
-    this.listUpdateNotification();
-    this.taskUpdateNotification();
-    this.subTakUpdateNotification();
+    this.notifyUser();
+
     this.userService.viewFriendList.subscribe(val => {
-      console.log(val);
       if (val == "list") {
         this.userService.selectedFriendId.subscribe(friendId => {
           this.friends = false;
           this.list = false;
           this.notifications = false;
           this.viewFriend = true;
+          console.log(this.friends);
           this.router.navigate([`/root/view/friend/${friendId}`]);
         });
       }
     });
   }
+
+  ngOnChanges() {}
   onClickOnLink(event) {
     event.preventDefault();
   }
@@ -83,6 +74,7 @@ export class RootComponent implements OnInit {
     this.list = true;
     this.notifications = false;
     this.router.navigate(["/root/user/list"]);
+    this.closeMobileNav();
   }
 
   public gotoFriends(): any {
@@ -90,6 +82,7 @@ export class RootComponent implements OnInit {
     this.notifications = false;
     this.friends = true;
     this.router.navigate(["/root/friends"]);
+    this.closeMobileNav();
   }
 
   public gotoNotifications(): any {
@@ -97,6 +90,7 @@ export class RootComponent implements OnInit {
     this.list = false;
     this.notifications = true;
     this.router.navigate(["/root/notifications"]);
+    this.closeMobileNav();
   }
 
   public verifyUser(): any {
@@ -122,43 +116,26 @@ export class RootComponent implements OnInit {
           setTimeout(() => {
             this.router.navigate(["/login"]);
           }, 500);
+          this.closeMobileNav();
         } else {
           this.toastr.warning(`${response.message}`, "ERROR");
+          this.closeMobileNav();
         }
       },
       err => {
         this.toastr.error("Some error occurred.", "ERROR");
         this.router.navigate(["/error"]);
+        this.closeMobileNav();
       }
     );
   }
 
-  public subTakUpdateNotification(): any {
-    this.socketService.updateSubtask().subscribe(
+  public notifyUser(): any {
+    this.socketService.notifyUser().subscribe(
       response => {
-        this.toastr.success(response.data);
-      },
-      err => {
-        this.toastr.error("Error Occured");
-      }
-    );
-  }
-
-  public taskUpdateNotification(): any {
-    this.socketService.updateTask().subscribe(
-      response => {
-        this.toastr.success(response.data);
-      },
-      err => {
-        this.toastr.error("Error Occured");
-      }
-    );
-  }
-
-  public listUpdateNotification(): any {
-    this.socketService.updateList().subscribe(
-      response => {
-        this.toastr.success(response.data);
+        if (this.userId === response.userId) {
+          this.toastr.success(response.data);
+        }
       },
       err => {
         this.toastr.error("Error Occured");

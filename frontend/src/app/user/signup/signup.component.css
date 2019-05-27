@@ -209,16 +209,16 @@ button {
   color: white;
 }
 
-.mobile-nav{
+.mobile-nav {
   display: none;
 }
 
 @media screen and (max-width: 573px) {
-  .mobile-nav{
+  .mobile-nav {
     display: block;
   }
-  .collapse .navbar-collapse{
-    display:  none;
+  .collapse .navbar-collapse {
+    display: none;
   }
   .name-box {
     width: 100%;
@@ -234,25 +234,20 @@ button {
 }
 
 @media screen and (max-width: 767px) {
-   
   .banner {
     display: none;
   }
   .form-div {
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 10%;
+    width: 95%;
+    margin: 2rem 2.5%;
   }
 }
 
-@media screen and (max-width: 768px)  {
-   
+/* @media screen and (max-width: 768px) {
   .banner {
     margin-top: 5%;
   }
   .form-div {
     margin-top: 5%;
   }
-}
-
- 
+} */

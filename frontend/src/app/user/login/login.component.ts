@@ -70,6 +70,7 @@ export class LoginComponent implements OnInit {
             Cookie.set("authToken", response.data.authToken);
             this.router.navigate(["/root/user/list"]);
           } else {
+            this.router.navigate(["/login"]);
             this.toastr.warning(`${response.message}`, "ERROR");
           }
         },

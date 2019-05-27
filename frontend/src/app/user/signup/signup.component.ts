@@ -17,7 +17,6 @@ export class SignupComponent implements OnInit {
   public countryName: string;
   public password: any;
 
-  public isProcessing = false;
   public countryCode: string;
   public allCountriesPhones: any;
   public countriesList: any[] = [];
@@ -26,9 +25,7 @@ export class SignupComponent implements OnInit {
     public router: Router,
     private toastr: ToastrService,
     public userService: UserService
-  ) {
-    console.log("signup called");
-  }
+  ) {}
 
   ngOnInit() {
     this.getCountryPhones();
@@ -93,7 +90,6 @@ export class SignupComponent implements OnInit {
     } else if (!this.userService.validatePassword(this.password)) {
       this.toastr.warning("PASSWORD LENGTH 8 REQUIRED");
     } else {
-      this.isProcessing = true;
       let newUserObj = {
         firstName: this.firstName,
         lastName: this.lastName,
@@ -109,11 +105,10 @@ export class SignupComponent implements OnInit {
             this.toastr.success("Please check your email", "SUCCESS");
           } else {
             this.toastr.warning(`${response.message}`, "ERROR");
-            this.isProcessing = false;
+            this.router.navigate(["/"]);
           }
         },
         err => {
-          this.isProcessing = false;
           this.toastr.warning("Error occurred", "ERROR");
           this.router.navigate(["/error"]);
         }
