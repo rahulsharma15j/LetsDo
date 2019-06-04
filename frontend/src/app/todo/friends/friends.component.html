@@ -24,7 +24,10 @@
             {{ friend?.friendName }}
           </p>
         </div>
-        <button class="button add-friend__btn" (click)="unfriendUser(friend)">
+        <button
+          class="clk-button add-friend__btn"
+          (click)="unfriendUser(friend)"
+        >
           Unfriend
         </button>
       </div>
@@ -44,7 +47,7 @@
         </div>
         <div class="user-name">{{ user.firstName }} {{ user.lastName }}</div>
         <button
-          class="button add-friend__btn"
+          class="clk-button add-friend__btn"
           (click)="sendFriendRequest(user)"
         >
           Add Friend
@@ -68,7 +71,7 @@
           {{ request?.friendName }}
         </div>
         <button
-          class="button cancel-friend__req"
+          class="clk-button cancel-friend__req"
           (click)="cancelFriendRequest(request)"
         >
           Cancel
@@ -91,13 +94,13 @@
           {{ request?.friendName }}
         </div>
         <button
-          class="button accept-friend__req"
+          class="clk-button accept-friend__req"
           (click)="acceptFriendRequest(request)"
         >
           Accept
         </button>
         <button
-          class="button reject-friend__req"
+          class="clk-button reject-friend__req"
           (click)="rejectFriendRequest(request)"
         >
           Reject

@@ -32,6 +32,11 @@ export class NotificationsComponent implements OnInit {
     this.userId = Cookie.get("receiverId");
     this.userName = Cookie.get("receiverName");
     this.getNotifications();
+    this.userService.notifyUser.subscribe(val => {
+      if (val == "notify") {
+        this.getNotifications();
+      }
+    });
   }
 
   public getNotifications(): any {

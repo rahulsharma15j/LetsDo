@@ -68,6 +68,11 @@ export class SingleUserComponent implements OnInit {
     this.listModeType = this.showListType[0];
     this.verifyUser();
     this.getAllList();
+    this.userService.loadList.subscribe(val => {
+      if (val == "load") {
+        this.getAllList();
+      }
+    });
   }
 
   public onSelectListType(): any {

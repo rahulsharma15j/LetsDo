@@ -117,13 +117,14 @@
               <!--Edit subtask ends-->
               <!--Subtask list-->
               <div *ngIf="subtask.subItemId !== subTaskId">
-                <div class="sub-task-name">{{ subtask.subItemName }}</div>
                 <div class="sub-task__options">
                   <i
                     class="far fa-edit add-task"
                     (click)="onClickOnEditSubTask(subtask, task, list)"
                   ></i>
                 </div>
+                <hr class="" id="hr" />
+                <div class="sub-task-name">{{ subtask.subItemName }}</div>
               </div>
               <!--Subtask list ends-->
             </div>

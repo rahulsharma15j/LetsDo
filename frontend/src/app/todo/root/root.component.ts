@@ -13,7 +13,7 @@ declare var $;
   templateUrl: "./root.component.html",
   styleUrls: ["./root.component.css"]
 })
-export class RootComponent implements OnInit, OnChanges {
+export class RootComponent implements OnInit {
   public authToken: string;
   public userId: string;
   public userName: string;
@@ -48,14 +48,12 @@ export class RootComponent implements OnInit, OnChanges {
           this.list = false;
           this.notifications = false;
           this.viewFriend = true;
-          console.log(this.friends);
           this.router.navigate([`/root/view/friend/${friendId}`]);
         });
       }
     });
   }
 
-  ngOnChanges() {}
   onClickOnLink(event) {
     event.preventDefault();
   }
@@ -71,8 +69,9 @@ export class RootComponent implements OnInit, OnChanges {
 
   public gotoList(): any {
     this.friends = false;
-    this.list = true;
+    this.viewFriend = false;
     this.notifications = false;
+    this.list = true;
     this.router.navigate(["/root/user/list"]);
     this.closeMobileNav();
   }
@@ -80,6 +79,7 @@ export class RootComponent implements OnInit, OnChanges {
   public gotoFriends(): any {
     this.list = false;
     this.notifications = false;
+    this.viewFriend = false;
     this.friends = true;
     this.router.navigate(["/root/friends"]);
     this.closeMobileNav();
@@ -88,6 +88,7 @@ export class RootComponent implements OnInit, OnChanges {
   public gotoNotifications(): any {
     this.friends = false;
     this.list = false;
+    this.viewFriend = false;
     this.notifications = true;
     this.router.navigate(["/root/notifications"]);
     this.closeMobileNav();
@@ -130,10 +131,20 @@ export class RootComponent implements OnInit, OnChanges {
     );
   }
 
+  public updateNotification(): any {
+    this.userService.notifyUser.next("notify");
+  }
+
+  public reloadList(): any {
+    this.userService.loadList.next("load");
+  }
+
   public notifyUser(): any {
     this.socketService.notifyUser().subscribe(
       response => {
         if (this.userId === response.userId) {
+          this.updateNotification();
+          this.reloadList();
           this.toastr.success(response.data);
         }
       },
