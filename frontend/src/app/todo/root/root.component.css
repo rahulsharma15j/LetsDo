@@ -67,6 +67,7 @@
   background: #3d5a6c;
   width: 80%;
   height: 100vh;
+  left: 100%;
 }
 
 .mobile-nav__items {
@@ -179,6 +180,10 @@
     right: 0;
   }
 
+  .mobile-nav {
+    display: block;
+  }
+
   .navbar-brand .brand {
     float: left;
   }
@@ -200,7 +205,9 @@
   .toggle-button {
     display: inline-block;
   }
-
+  .mobile-nav {
+    display: block;
+  }
   .navbar-brand .brand {
     float: left;
   }

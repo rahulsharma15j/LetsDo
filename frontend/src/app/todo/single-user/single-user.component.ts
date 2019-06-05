@@ -37,6 +37,7 @@ export class SingleUserComponent implements OnInit {
   public addSubTask: boolean = false;
   public editSubTask: boolean = false;
   public showTask: boolean = false;
+  public updateItem: boolean = false;
   public showList: boolean = false;
   public dropDownListType: boolean = false;
   public listId: string;
@@ -150,6 +151,7 @@ export class SingleUserComponent implements OnInit {
     this.addSubTask = true;
     this.showTask = true;
     this.taskId = task.itemId;
+    this.updateItem = false;
   }
 
   public onClickOnEditSubTask(subTask, task, list): any {

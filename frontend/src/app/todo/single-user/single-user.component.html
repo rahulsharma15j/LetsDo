@@ -162,7 +162,10 @@
         <div class="all-tasks__container" *ngFor="let task of list.tasks">
           <div *ngIf="task.listId === list.listId">
             <!--Edit task-->
-            <div class="list-container__task" *ngIf="task.itemId === taskId">
+            <div
+              class="list-container__task"
+              *ngIf="task.itemId === taskId && updatetask"
+            >
               <div class="list-container__add-sub-task">
                 Task Name
               </div>

@@ -59,12 +59,12 @@ export class RootComponent implements OnInit {
   }
   public mobileNavHandler(): any {
     $(".backdrop").fadeIn();
-    $(".mobile-nav").fadeIn(300);
+    $(".mobile-nav").animate({ left: "20%" }, 400);
   }
 
   public closeMobileNav(): any {
     $(".backdrop").fadeOut(100);
-    $(".mobile-nav").fadeOut(300);
+    $(".mobile-nav").animate({ left: "100%" }, 400);
   }
 
   public gotoList(): any {
