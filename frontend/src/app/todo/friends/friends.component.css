@@ -81,7 +81,7 @@
 
 .accept-friend__req,
 .reject-friend__req {
-  margin: 0;
+  margin: 0.5rem 0.5rem;
 }
 .reject-friend__req {
   background: #f89b9bde;

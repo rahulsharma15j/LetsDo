@@ -277,6 +277,7 @@ export class ViewFriendListComponent implements OnInit {
         if (response.status === 200) {
           this.toastr.success(response.message);
           this.getAllList();
+
           this.listId = "";
           this.updateListName = "";
         } else {

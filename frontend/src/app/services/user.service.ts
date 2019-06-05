@@ -11,9 +11,13 @@ export class UserService {
   public viewFriendList: Subject<any> = new Subject<any>();
   public loadList: Subject<any> = new Subject<any>();
   public notifyUser: Subject<any> = new Subject<any>();
+  public showNotificationDot: Subject<any> = new Subject<any>();
 
   private friendId = new BehaviorSubject("");
   selectedFriendId = this.friendId.asObservable();
+
+  private notify = new BehaviorSubject("");
+  data = this.notify.asObservable();
 
   public userType: any = "";
   public passwordRegex = /^[A-Za-z0-9]\w{7,}$/;
@@ -24,6 +28,10 @@ export class UserService {
 
   public viewFriend(userId: any): any {
     this.friendId.next(userId);
+  }
+
+  public notifyFriend(data: any): any {
+    this.notify.next(data);
   }
 
   /**

@@ -177,6 +177,7 @@ export class SingleUserComponent implements OnInit {
     this.taskId = task.itemId;
     this.list = list;
     this.updateTaskName = task.itemName;
+    this.updateItem = true;
   }
 
   public onClickOnCancelTask(): any {

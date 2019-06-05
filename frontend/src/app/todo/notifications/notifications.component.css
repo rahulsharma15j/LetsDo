@@ -3,6 +3,7 @@
   height: calc(100% - 60px - 40px);
   width: 100%;
   padding-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .user-list {
@@ -52,6 +53,7 @@
   border: #3d5a6c;
   float: right;
   vertical-align: middle;
+  outline: none;
 }
 .delete-noti__btn:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

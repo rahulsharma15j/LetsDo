@@ -35,6 +35,7 @@ export class NotificationsComponent implements OnInit {
     this.userService.notifyUser.subscribe(val => {
       if (val == "notify") {
         this.getNotifications();
+        this.showNotification(this.userId);
       }
     });
   }
@@ -76,5 +77,10 @@ export class NotificationsComponent implements OnInit {
           this.router.navigate(["/error"]);
         }
       );
+  }
+
+  public showNotification(frindId): any {
+    this.userService.showNotificationDot.next("dot");
+    this.userService.notifyFriend(frindId);
   }
 }

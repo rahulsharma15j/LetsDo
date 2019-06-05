@@ -19,7 +19,9 @@
         </li>
         <li class="nav-item ml-auto">
           <a class="nav-link" (click)="gotoNotifications()"
-            ><i id="notification" class="fas fa-bell"><i class="badge"></i> </i>
+            ><i id="notification" class="fas fa-bell"
+              ><i *ngIf="showDot" class="badge"></i>
+            </i>
 
             Notifications</a
           >

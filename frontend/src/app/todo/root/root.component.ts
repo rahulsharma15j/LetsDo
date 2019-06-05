@@ -23,6 +23,7 @@ export class RootComponent implements OnInit {
   public friends: boolean = false;
   public notifications: boolean = false;
   public viewFriend: boolean = false;
+  public showDot: boolean = false;
 
   constructor(
     public userService: UserService,
@@ -49,6 +50,15 @@ export class RootComponent implements OnInit {
           this.notifications = false;
           this.viewFriend = true;
           this.router.navigate([`/root/view/friend/${friendId}`]);
+        });
+      }
+    });
+    this.userService.showNotificationDot.subscribe(val => {
+      if (val == "dot") {
+        this.userService.data.subscribe(friendId => {
+          if (this.userId === friendId) {
+            this.showDot = true;
+          }
         });
       }
     });
@@ -86,6 +96,7 @@ export class RootComponent implements OnInit {
   }
 
   public gotoNotifications(): any {
+    this.showDot = false;
     this.friends = false;
     this.list = false;
     this.viewFriend = false;
