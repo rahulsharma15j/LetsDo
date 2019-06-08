@@ -42,4 +42,16 @@ export class VerifyUserComponent implements OnInit {
       }
     );
   }
+
+  onClickOnLink(event) {
+    event.preventDefault();
+  }
+
+  gotoLogIn() {
+    this.router.navigate(["/login"]);
+  }
+
+  gotoSignUp() {
+    this.router.navigate(["/"]);
+  }
 }

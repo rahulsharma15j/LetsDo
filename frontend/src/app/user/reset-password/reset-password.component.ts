@@ -24,6 +24,18 @@ export class ResetPasswordComponent implements OnInit {
     this.resetToken = this.route.snapshot.paramMap.get("resetToken");
   }
 
+  onClickOnLink(event) {
+    event.preventDefault();
+  }
+
+  gotoLogIn() {
+    this.router.navigate(["/login"]);
+  }
+
+  gotoSignUp() {
+    this.router.navigate(["/"]);
+  }
+
   public resetUserPassword(): any {
     if (!this.password) {
       this.toastr.warning("PASSWORD RQUIRED");

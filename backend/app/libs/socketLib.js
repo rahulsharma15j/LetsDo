@@ -1,7 +1,7 @@
 const socketIo = require("socket.io");
 const tokenLib = require("../libs/tokenLib");
 const logger = require("../libs/loggerLib");
-const redisLib = require("../libs/redisLib");
+
 const event = require("./eventsLib");
 
 let setServer = server => {
@@ -24,38 +24,7 @@ let setServer = server => {
           console.log("user is verifyied setting details.");
           let currentUser = user.data;
 
-          //setting userid to socket
           socket.userId = currentUser.userId;
-          let fullName = `${currentUser.firstName} ${currentUser.lastName}`;
-          let key = currentUser.userId;
-          let value = fullName;
-
-          let setUserOnline = redisLib.setNewOnlineUserInHash(
-            "OnlineUsers",
-            key,
-            value,
-            (err, result) => {
-              if (err) {
-                logger.error(
-                  err.message,
-                  "socketLib: setNewOnlineUserInHash().",
-                  10
-                );
-              } else {
-                redisLib.getAllUsersInHash("OnlineUsers", (err, result) => {
-                  if (err) {
-                    logger.error(
-                      err.message,
-                      "socketLib: getAllUsersInHash().",
-                      10
-                    );
-                  } else {
-                    socket.broadcast.emit("online-user-list", result);
-                  }
-                });
-              }
-            }
-          );
         }
       });
     });
@@ -67,18 +36,7 @@ let setServer = server => {
       socket.emit("notify", data);
     });
 
-    socket.on("disconnect", () => {
-      if (socket.userId) {
-        redisLib.deleteUserFromHash("onlineUsers", socket.userId);
-        redisLib.getAllUsersInHash("onlineUsers", (err, result) => {
-          if (err) {
-            logger.error(err.message, "socketLib: getAllUsersInHash().", 10);
-          } else {
-            socket.broadcast.emit("online-user-list", result);
-          }
-        });
-      }
-    });
+    socket.on("disconnect", () => {});
   });
 };
 
