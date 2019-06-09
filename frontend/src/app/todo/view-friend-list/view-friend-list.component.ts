@@ -182,7 +182,7 @@ export class ViewFriendListComponent implements OnInit {
       response => {
         if (response.status === 200) {
           this.allTasks = response.data;
-          //console.log(this.allTasks);
+
           if (this.allTasks) {
             list["tasks"] = this.allTasks;
           } else {

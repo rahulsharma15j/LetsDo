@@ -9,11 +9,9 @@ let setServer = server => {
   let myIo = io.of("/");
 
   myIo.on("connection", socket => {
-    console.log("on connection emitting verify user.");
     socket.emit("verify-user", "");
 
     socket.on("set-user", authToken => {
-      console.log("set user called.");
       tokenLib.verifyTokenWithoutSecret(authToken, (err, user) => {
         if (err) {
           socket.emit("auth-error", {
@@ -21,7 +19,6 @@ let setServer = server => {
             error: "Please provide correct authToken."
           });
         } else {
-          console.log("user is verifyied setting details.");
           let currentUser = user.data;
 
           socket.userId = currentUser.userId;

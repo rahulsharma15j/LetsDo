@@ -19,9 +19,7 @@ export class LoginComponent implements OnInit {
     private toastr: ToastrService,
     public userService: UserService,
     private router: Router
-  ) {
-    console.log("login called");
-  }
+  ) {}
 
   ngOnInit() {}
 

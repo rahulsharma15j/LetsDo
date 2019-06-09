@@ -8,10 +8,8 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
 const path = require("path");
-
 const appConfig = require("./config/appConfig");
 const logger = require("./app/libs/loggerLib");
-//const reminderLib = require("./app/libs/reminderLib");
 const appErrorHandler = require("./app/middlewares/appErrorHandler");
 const routeLogger = require("./app/middlewares/routeLogger");
 const modelsPath = "./app/models";

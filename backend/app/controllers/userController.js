@@ -16,7 +16,6 @@ let signUp = (req, res) => {
         check.isEmpty(req.body.countryName) ||
         check.isEmpty(req.body.password)
       ) {
-        console.log("hi");
         reject(
           response.generate(
             true,
@@ -63,7 +62,6 @@ let signUp = (req, res) => {
 
 /**User verify Function. */
 let verifyUserEmail = (req, res) => {
-  console.log(req.body.userId);
   let validateParams = () => {
     return new Promise((resolve, reject) => {
       if (check.isEmpty(req.body.userId)) {
@@ -92,7 +90,6 @@ let verifyUserEmail = (req, res) => {
 
 /**User login function. */
 let logIn = (req, res) => {
-  console.log(req.body);
   let validateParams = () => {
     return new Promise((resolve, reject) => {
       req.body.email
@@ -219,7 +216,6 @@ let getSingleUser = (req, res) => {
 let changeUserPassword = (req, res) => {
   let validateParams = () => {
     return new Promise((resolve, reject) => {
-      console.log(req.user.userId);
       if (
         check.isEmpty(req.user.userId) ||
         check.isEmpty(req.body.password) ||

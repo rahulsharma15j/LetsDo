@@ -8,7 +8,6 @@ const notification = require("./../libs/notification");
 /**Models */
 const List = require("./../models/List");
 const Notification = require("./../models/Notification");
-const User = require("./../models/User");
 
 /**
  * This function returns all Lists.
@@ -168,7 +167,6 @@ let getAllNotifications = (req, res) => {
 
 let deleteNotification = (req, res) => {
   return new Promise((resolve, reject) => {
-    console.log(req.params.notificationId);
     Notification.findOneAndRemove({
       notificationId: req.params.notificationId
     }).exec((err, notificationDetails) => {

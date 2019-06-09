@@ -1,4 +1,3 @@
-/**Libraries */
 const listLib = require("./../libs/listLib");
 const response = require("./../libs/responseLib");
 const check = require("./../libs/checkLib");
@@ -9,8 +8,6 @@ const notification = require("./../libs/notification");
 const shortId = require("shortid");
 
 /**Models */
-const List = require("./../models/List");
-const User = require("./../models/User");
 const Item = require("./../models/Item");
 
 let getAllItems = (req, res) => {

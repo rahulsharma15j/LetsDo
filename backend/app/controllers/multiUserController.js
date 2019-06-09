@@ -4,12 +4,9 @@ const response = require("./../libs/responseLib");
 const check = require("./../libs/checkLib");
 const userLib = require("./../libs/userLib");
 const logger = require("./../libs/loggerLib");
-const shortId = require("shortid");
 
 /**Models */
-const List = require("./../models/List");
 const User = require("./../models/User");
-const History = require("./../models/History");
 
 /**
  * This function returns all friend request.
@@ -212,7 +209,6 @@ let sendFriendRequest = (req, res) => {
     .then(updateSender)
     .then(updateReceiver)
     .then(result => {
-      //console.log("request");
       res.send(response.generate(false, "Friend request sent.", 200, null));
     })
     .catch(err => {
@@ -486,7 +482,7 @@ let rejectFriendRequest = (req, res) => {
           friendRequestRecieved: { friendId: req.body.senderId }
         }
       };
-      console.log(options);
+
       User.updateOne({ userId: req.body.receiverId }, options).exec(
         (err, result) => {
           if (err) {

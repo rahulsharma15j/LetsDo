@@ -5,8 +5,6 @@ const check = require("./checkLib");
 const time = require("./timeLib");
 const shortId = require("shortid");
 /**Models */
-const List = require("./../models/List");
-const User = require("./../models/User");
 const Item = require("./../models/Item");
 
 let findItems = listDetails => {
@@ -49,7 +47,6 @@ let findItem = itemId => {
 
 let update = req => {
   return new Promise((resolve, reject) => {
-    console.log(req.body);
     let options = req.body;
     options.modifiedOn = time.now();
     Item.update({ itemId: req.params.itemId }, options).exec((err, result) => {

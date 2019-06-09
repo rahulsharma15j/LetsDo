@@ -5,7 +5,6 @@ import { SocketService } from "src/app/services/socket.service";
 import { ToastrService } from "ngx-toastr";
 import { ListService } from "src/app/services/list.service";
 import { Router } from "@angular/router";
-import { FilterPipe } from "ngx-filter-pipe";
 
 declare var $;
 
@@ -308,7 +307,6 @@ export class SingleUserComponent implements OnInit {
         },
         err => {
           this.toastr.error("Error Occoured");
-
           this.router.navigate(["/error"]);
         }
       );
@@ -371,7 +369,6 @@ export class SingleUserComponent implements OnInit {
       response => {
         if (response.status === 200) {
           this.allTasks = response.data;
-          //console.log(this.allTasks);
           if (this.allTasks) {
             list["tasks"] = this.allTasks;
           } else {
@@ -394,7 +391,6 @@ export class SingleUserComponent implements OnInit {
       response => {
         if (response.status === 200) {
           this.toastr.success(response.message);
-          //this.getAllList();
           this.getAllTask(this.list);
         } else {
           this.toastr.warning(response.message);
@@ -435,7 +431,6 @@ export class SingleUserComponent implements OnInit {
         },
         err => {
           this.toastr.error("Error Occoured");
-
           this.router.navigate(["/error"]);
         }
       );
@@ -453,7 +448,6 @@ export class SingleUserComponent implements OnInit {
       response => {
         if (response.status === 200) {
           this.toastr.success(response.message);
-          //this.getAllList();
           this.getAllTask(this.list);
         } else {
           this.toastr.warning(response.message);
@@ -461,14 +455,12 @@ export class SingleUserComponent implements OnInit {
       },
       err => {
         this.toastr.error("Error Occoured");
-
         this.router.navigate(["/error"]);
       }
     );
   }
 
   public updateSubTask(subItem): any {
-    console.log(subItem);
     let obj = {
       subItemId: subItem.subItemId,
       subItemName: this.updateSubTaskName,
@@ -476,7 +468,7 @@ export class SingleUserComponent implements OnInit {
       modifierName: this.userName,
       authToken: this.authToken
     };
-    console.log(obj);
+
     this.listService.updateSubTask(obj, this.taskId).subscribe(
       response => {
         if (response.status === 200) {
@@ -485,7 +477,6 @@ export class SingleUserComponent implements OnInit {
           this.getAllTask(this.list);
           this.subTaskId = "";
           this.updateSubTaskName = "";
-          //this.addSubTask = false;
         } else {
           this.toastr.warning(response.message);
         }
@@ -506,7 +497,7 @@ export class SingleUserComponent implements OnInit {
       itemModifierName: this.userName,
       authToken: this.authToken
     };
-    console.log(obj);
+
     this.listService.updateTask(obj).subscribe(
       response => {
         if (response.status === 200) {
@@ -515,7 +506,6 @@ export class SingleUserComponent implements OnInit {
           this.getAllTask(this.list);
           this.taskId = "";
           this.updateTaskName = "";
-          //this.addSubTask = false;
         } else {
           this.toastr.warning(response.message);
         }
@@ -536,7 +526,7 @@ export class SingleUserComponent implements OnInit {
       modifierName: this.userName,
       authToken: this.authToken
     };
-    //console.log(obj);
+
     this.listService.updateList(obj).subscribe(
       response => {
         if (response.status === 200) {
@@ -544,7 +534,6 @@ export class SingleUserComponent implements OnInit {
           this.getAllList();
           this.listId = "";
           this.updateListName = "";
-          //this.addSubTask = false;
         } else {
           this.toastr.warning(response.message);
         }

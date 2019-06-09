@@ -7,7 +7,6 @@ const shortId = require("shortid");
 /**Models */
 const List = require("./../models/List");
 const Notification = require("./../models/Notification");
-const User = require("./../models/User");
 
 let findLists = userDetails => {
   return new Promise((resolve, reject) => {
@@ -134,7 +133,6 @@ let create = req => {
 
 let findNotifications = userDetails => {
   return new Promise((resolve, reject) => {
-    console.log(userDetails.userId);
     Notification.find({ userId: userDetails.userId })
       .select("-_id -__v -type")
       .sort("-createdOn")

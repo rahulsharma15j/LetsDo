@@ -248,7 +248,6 @@ export class FriendsComponent implements OnInit {
       response => {
         if (response.status === 200) {
           this.toastr.success(response.message);
-          //his.getAllReceivedRequests();
         } else {
           this.toastr.warning(response.message);
         }
@@ -274,7 +273,6 @@ export class FriendsComponent implements OnInit {
         if (response.status === 200) {
           this.toastr.success(response.message);
           this.getAllFriends();
-          //his.getAllReceivedRequests();
         } else {
           this.toastr.warning(response.message);
         }
