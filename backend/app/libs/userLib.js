@@ -165,6 +165,7 @@ let findUserByUserName = req => {
           );
           reject(response.generate(true, "User not verified.", 400, null));
         } else {
+          retrievedUserDetails.resetToken = '';
           resolve(retrievedUserDetails);
         }
       });
@@ -456,6 +457,38 @@ let changePassword = (req, userDetails) => {
   });
 };
 
+// let updateResetToken = (userDetails) => {
+//   return new Promise((resolve, reject) => {
+//     let updateQuery = {
+//       resetToken: null,
+//       resetTokenExpires: null
+//     };
+
+//     User.updateOne({ userId: userDetails.userId }, updateQuery).exec(
+//       (err, result) => {
+//         if (err) {
+//           logger.error(err.message, "userLib: updateResetToken()", 10);
+//           reject(
+//             response.generate(true, "Failed to update resetToken.", 500, null)
+//           );
+//         } else if (check.isEmpty(result)) {
+//           logger.info(
+//             "Failed to update resetToken.",
+//             "userLib: updateResetToken()",
+//             7
+//           );
+//           reject(
+//             response.generate(true, "Failed to update resetToken.", 404, null)
+//           );
+//         } else {
+//           console.log('reset token');
+//           resolve(result);
+//         }
+//       }
+//     );
+//   });
+// };
+
 /**Funtion to update user password. */
 let updatePassword = (req, userDetails) => {
   return new Promise((resolve, reject) => {
@@ -592,5 +625,6 @@ module.exports = {
   validatePassword: validatePassword,
   edit: edit,
   remove: remove,
-  changePassword: changePassword
+  changePassword: changePassword,
+  // updateResetToken: updateResetToken
 };

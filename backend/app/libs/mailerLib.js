@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const appConfig = require("./../../config/appConfig");
-const mailingId = "letsdoapp24@gmail.com";
+const mailingId = "dummy.meeting.planner@gmail.com";
 
 let sendActivationEmail = userDetails => {
   let userName = `${userDetails.firstName} ${userDetails.lastName}`;
@@ -10,7 +10,7 @@ let sendActivationEmail = userDetails => {
                     Please click below link to activate your account:<br><br>
                     <a href="${appConfig.appUrl}/verify/${
     userDetails.userId
-  }">Activate account.</a> `;
+    }">Activate account.</a> `;
   sendEmail(userDetails.email, subject, message);
 };
 
@@ -27,10 +27,8 @@ let sendPasswordResetEmail = (userDetails, resetToken) => {
   let subject = "Password Reset.";
   let message = `Hello ${fullName},<br><br>This email is sent you to reset your 
                    account password.<br>
-                   Please click on the following link to reset your password.
-                   <br><a href="${
-                     appConfig.appUrl
-                   }/reset-password/${resetToken}">Reset password</a>`;
+                   Please click on the following link to reset your password.<br>
+                   <a href="${appConfig.appUrl}/reset-password/${resetToken}">Reset password</a>`;
   sendEmail(userDetails.email, subject, message);
 };
 
@@ -45,11 +43,12 @@ let sendConfirmationEmail = userDetails => {
 
 let sendEmail = (to, subject, message, cb) => {
   const authpass = jwt.decode(`${appConfig.key}`);
+
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: mailingId,
-      pass: authpass.pwd
+      pass: "stack.2019"
     }
   });
   let mailOptions = {

@@ -95,8 +95,8 @@ let logIn = (req, res) => {
       req.body.email
         ? (loginType = "email")
         : req.body.userName
-        ? (loginType = "userName")
-        : (loginType = "invalid");
+          ? (loginType = "userName")
+          : (loginType = "invalid");
       switch (loginType) {
         case "email":
           if (
