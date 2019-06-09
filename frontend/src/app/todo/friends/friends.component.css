@@ -1,3 +1,8 @@
+.wrapper {
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
 .user-list__container {
   background: ghostwhite;
   min-height: calc(100vh - 40px);

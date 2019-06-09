@@ -103,6 +103,7 @@ export class SignupComponent implements OnInit {
         response => {
           if (response.status === 200) {
             this.toastr.success("Please check your email", "SUCCESS");
+            this.router.navigate(["/login"]);
           } else {
             this.toastr.warning(`${response.message}`, "ERROR");
             this.router.navigate(["/"]);

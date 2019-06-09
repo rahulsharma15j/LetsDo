@@ -29,6 +29,8 @@
   padding-bottom: 2rem;
   background: ghostwhite;
   height: calc(100% - 40px);
+  max-width: 2000px;
+  margin: 0 auto;
 }
 
 .list-container__create-list__button {
