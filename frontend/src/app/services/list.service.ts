@@ -1,44 +1,45 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { environment as env } from "../../environments/environment.prod";
 
 @Injectable({
   providedIn: "root"
 })
 export class ListService {
-  public baseUrl: string = "http://localhost:3000/api/v1";
+  // public baseUrl: string = "http://localhost:3000/api/v1";
 
   constructor(private http: HttpClient) {}
 
   public getAllList(userId, authToken): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}/lists/view/all/${userId}?authToken=${authToken}`
+      `${env.apiUrl}/lists/view/all/${userId}?authToken=${authToken}`
     );
   }
 
   public getAllPublicList(userId, authToken): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}/lists/view/all/public/${userId}?authToken=${authToken}`
+      `${env.apiUrl}/lists/view/all/public/${userId}?authToken=${authToken}`
     );
   }
 
   public getAllPrivateList(userId, authToken): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}/lists/view/all/private/${userId}?authToken=${authToken}`
+      `${env.apiUrl}/lists/view/all/private/${userId}?authToken=${authToken}`
     );
   }
 
   public getAllNotifications(userId, authToken): Observable<any> {
     return this.http.get(
       `${
-        this.baseUrl
+        env.apiUrl
       }/lists/view/all/notifications/${userId}?authToken=${authToken}`
     );
   }
 
   public getList(listId, authToken): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}/lists/details/${listId}?authToken=${authToken}`
+      `${env.apiUrl}/lists/details/${listId}?authToken=${authToken}`
     );
   }
 
@@ -52,13 +53,13 @@ export class ListService {
       .set("mode", newList.mode)
       .set("authToken", authToken);
 
-    return this.http.post(`${this.baseUrl}/lists/create`, params);
+    return this.http.post(`${env.apiUrl}/lists/create`, params);
   }
 
   public deleteList(listId, authToken): Observable<any> {
     const params = new HttpParams().set("authToken", authToken);
 
-    return this.http.post(`${this.baseUrl}/lists/delete/${listId}`, params);
+    return this.http.post(`${env.apiUrl}/lists/delete/${listId}`, params);
   }
 
   public createTask(newTask, authToken): Observable<any> {
@@ -71,22 +72,19 @@ export class ListService {
       .set("itemModifierName", newTask.itemModifierName)
       .set("authToken", authToken);
 
-    return this.http.post(`${this.baseUrl}/items/create-item`, params);
+    return this.http.post(`${env.apiUrl}/items/create-item`, params);
   }
 
   public getAllTask(listId, authToken): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}/items/view/all/${listId}?authToken=${authToken}`
+      `${env.apiUrl}/items/view/all/${listId}?authToken=${authToken}`
     );
   }
 
   public deleteTask(itemId, authToken): Observable<any> {
     const params = new HttpParams().set("authToken", authToken);
 
-    return this.http.post(
-      `${this.baseUrl}/items/delete-item/${itemId}`,
-      params
-    );
+    return this.http.post(`${env.apiUrl}/items/delete-item/${itemId}`, params);
   }
 
   public createSubTask(newSubTask, authToken): Observable<any> {
@@ -99,7 +97,7 @@ export class ListService {
       .set("subItemModifierName", newSubTask.subItemModifierName)
       .set("authToken", authToken);
 
-    return this.http.put(`${this.baseUrl}/items/create-sub-item`, params);
+    return this.http.put(`${env.apiUrl}/items/create-sub-item`, params);
   }
 
   public deleteSubTask(itemId, obj): Observable<any> {
@@ -109,7 +107,7 @@ export class ListService {
       .set("subItemModifierId", obj.subItemModifierId)
       .set("subItemModifierName", obj.subItemModifierName);
     return this.http.put(
-      `${this.baseUrl}/items/delete-sub-item/${itemId}`,
+      `${env.apiUrl}/items/delete-sub-item/${itemId}`,
       params
     );
   }
@@ -123,7 +121,7 @@ export class ListService {
       .set("authToken", subItem.authToken);
 
     return this.http.put(
-      `${this.baseUrl}/items/update-sub-item/${itemId}`,
+      `${env.apiUrl}/items/update-sub-item/${itemId}`,
       params
     );
   }
@@ -137,7 +135,7 @@ export class ListService {
       .set("authToken", task.authToken);
 
     return this.http.put(
-      `${this.baseUrl}/items/update-item/${task.itemId}`,
+      `${env.apiUrl}/items/update-item/${task.itemId}`,
       params
     );
   }
@@ -149,7 +147,7 @@ export class ListService {
       .set("modifierName", list.modifierName)
       .set("authToken", list.authToken);
 
-    return this.http.put(`${this.baseUrl}/lists/update/${list.listId}`, params);
+    return this.http.put(`${env.apiUrl}/lists/update/${list.listId}`, params);
   }
 
   public updateFriendList(list): Observable<any> {
@@ -161,7 +159,7 @@ export class ListService {
       .set("friendId", list.friendId)
       .set("friendName", list.friendName);
 
-    return this.http.put(`${this.baseUrl}/lists/update/${list.listId}`, params);
+    return this.http.put(`${env.apiUrl}/lists/update/${list.listId}`, params);
   }
 
   public updateFriendTask(task): Observable<any> {
@@ -175,7 +173,7 @@ export class ListService {
       .set("friendName", task.friendName);
 
     return this.http.put(
-      `${this.baseUrl}/items/update-item/${task.itemId}`,
+      `${env.apiUrl}/items/update-item/${task.itemId}`,
       params
     );
   }
@@ -191,7 +189,7 @@ export class ListService {
       .set("friendName", subItem.friendName);
 
     return this.http.put(
-      `${this.baseUrl}/items/update-sub-item/${itemId}`,
+      `${env.apiUrl}/items/update-sub-item/${itemId}`,
       params
     );
   }
@@ -200,7 +198,7 @@ export class ListService {
     const params = new HttpParams().set("authToken", authToken);
 
     return this.http.post(
-      `${this.baseUrl}/lists/delete/notification/${notificationId}`,
+      `${env.apiUrl}/lists/delete/notification/${notificationId}`,
       params
     );
   }

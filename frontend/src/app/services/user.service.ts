@@ -2,12 +2,13 @@ import { Injectable } from "@angular/core";
 import { Subject, Observable, BehaviorSubject } from "rxjs";
 
 import { HttpParams, HttpClient } from "@angular/common/http";
+import { environment as env } from "../../environments/environment.prod";
 
 @Injectable({
   providedIn: "root"
 })
 export class UserService {
-  public baseUrl: string = "http://localhost:3000/api/v1";
+  //public baseUrl: string = "http://localhost:3000/api/v1";
   public viewFriendList: Subject<any> = new Subject<any>();
   public loadList: Subject<any> = new Subject<any>();
   public notifyUser: Subject<any> = new Subject<any>();
@@ -59,7 +60,7 @@ export class UserService {
         data.email ? data.email : data.userName
       )
       .set("password", data.password);
-    return this.http.post(`${this.baseUrl}/users/login`, params);
+    return this.http.post(`${env.apiUrl}/users/login`, params);
   }
 
   /**
@@ -75,7 +76,7 @@ export class UserService {
       .set("userName", data.userName)
       .set("countryName", data.countryName)
       .set("password", data.password);
-    return this.http.post(`${this.baseUrl}/users/signup`, params);
+    return this.http.post(`${env.apiUrl}/users/signup`, params);
   }
 
   /**
@@ -84,12 +85,12 @@ export class UserService {
    */
   public resetPassword(data): Observable<any> {
     const params = new HttpParams().set("email", data.email);
-    return this.http.post(`${this.baseUrl}/users/reset-password`, params);
+    return this.http.post(`${env.apiUrl}/users/reset-password`, params);
   }
 
   public verifyUser(userId): Observable<any> {
     const params = new HttpParams().set("userId", userId);
-    return this.http.put(`${this.baseUrl}/users/verify`, params);
+    return this.http.put(`${env.apiUrl}/users/verify`, params);
   }
 
   /**
@@ -101,18 +102,16 @@ export class UserService {
       .set("confirm", data.confirm)
       .set("resetToken", data.resetToken)
       .set("password", data.password);
-    return this.http.put(`${this.baseUrl}/users/update-password`, params);
+    return this.http.put(`${env.apiUrl}/users/update-password`, params);
   }
 
   public getAllUsers(authToken): Observable<any> {
-    return this.http.get(
-      `${this.baseUrl}/users/view/all?authToken=${authToken}`
-    );
+    return this.http.get(`${env.apiUrl}/users/view/all?authToken=${authToken}`);
   }
 
   public getUser(userId, authToken): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}/users/details/${userId}?authToken=${authToken}`
+      `${env.apiUrl}/users/details/${userId}?authToken=${authToken}`
     );
   }
 
@@ -126,7 +125,7 @@ export class UserService {
 
   public logout(authToken): Observable<any> {
     const params = new HttpParams().set("authToken", authToken);
-    return this.http.post(`${this.baseUrl}/users/logout`, params);
+    return this.http.post(`${env.apiUrl}/users/logout`, params);
   }
 
   public validateEmail(email): boolean {
@@ -152,7 +151,7 @@ export class UserService {
 
   public logOut(authToken): Observable<any> {
     const params = new HttpParams().set("authToken", authToken);
-    return this.http.post(`${this.baseUrl}/users/logout`, params);
+    return this.http.post(`${env.apiUrl}/users/logout`, params);
   }
 
   public sendRequest(obj): Observable<any> {
@@ -163,7 +162,7 @@ export class UserService {
       .set("receiverName", obj.receiverName)
       .set("authToken", obj.authToken);
     return this.http.post(
-      `${this.baseUrl}/multi-users/send/friend-request`,
+      `${env.apiUrl}/multi-users/send/friend-request`,
       params
     );
   }
@@ -171,7 +170,7 @@ export class UserService {
   public getAllSentRequests(userId, authToken): Observable<any> {
     return this.http.get(
       `${
-        this.baseUrl
+        env.apiUrl
       }/multi-users/view/all/sent-requests/${userId}?authToken=${authToken}`
     );
   }
@@ -179,7 +178,7 @@ export class UserService {
   public getAllReceivedRequests(userId, authToken): Observable<any> {
     return this.http.get(
       `${
-        this.baseUrl
+        env.apiUrl
       }/multi-users/view/all/received-requests/${userId}?authToken=${authToken}`
     );
   }
@@ -192,7 +191,7 @@ export class UserService {
       .set("receiverName", obj.receiverName)
       .set("authToken", obj.authToken);
     return this.http.post(
-      `${this.baseUrl}/multi-users/cancel/friend-request`,
+      `${env.apiUrl}/multi-users/cancel/friend-request`,
       params
     );
   }
@@ -205,7 +204,7 @@ export class UserService {
       .set("receiverName", obj.receiverName)
       .set("authToken", obj.authToken);
     return this.http.post(
-      `${this.baseUrl}/multi-users/reject/friend-request`,
+      `${env.apiUrl}/multi-users/reject/friend-request`,
       params
     );
   }
@@ -218,7 +217,7 @@ export class UserService {
       .set("receiverName", obj.receiverName)
       .set("authToken", obj.authToken);
     return this.http.post(
-      `${this.baseUrl}/multi-users/accept/friend-request`,
+      `${env.apiUrl}/multi-users/accept/friend-request`,
       params
     );
   }
@@ -230,6 +229,6 @@ export class UserService {
       .set("receiverId", obj.receiverId)
       .set("receiverName", obj.receiverName)
       .set("authToken", obj.authToken);
-    return this.http.post(`${this.baseUrl}/multi-users/unfriend`, params);
+    return this.http.post(`${env.apiUrl}/multi-users/unfriend`, params);
   }
 }

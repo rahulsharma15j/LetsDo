@@ -2,15 +2,16 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import * as io from "socket.io-client";
 import { Observable } from "rxjs";
+import { environment as env } from "../../environments/environment.prod";
 
 @Injectable({
   providedIn: "root"
 })
 export class SocketService {
-  public baseUrl: string = "http://localhost:3000";
+  // public baseUrl: string = "http://localhost:3000";
   private socket: any;
   constructor(private http: HttpClient) {
-    this.socket = io(this.baseUrl);
+    this.socket = io(env.socketUrl);
   }
 
   public setUser(authToken): any {
