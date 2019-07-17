@@ -66,6 +66,7 @@ export class RootComponent implements OnInit {
 
   onClickOnLink(event) {
     event.preventDefault();
+    this.router.navigate(["/root/user/list"]);
   }
   public mobileNavHandler(): any {
     $(".backdrop").fadeIn();

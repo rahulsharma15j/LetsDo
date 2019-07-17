@@ -75,11 +75,11 @@
   height: 100%;
   list-style: none;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: top;
-  align-items: center;
+  align-items: left;
 }
 
 .mobile-nav__item {

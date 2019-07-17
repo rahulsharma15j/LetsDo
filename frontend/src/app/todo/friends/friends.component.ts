@@ -21,10 +21,10 @@ export class FriendsComponent implements OnInit {
   public userName: any;
   public userInfo: any;
 
-  public allFriendsList: [] = [];
-  public allUsersList: [] = [];
-  public allSentRequestsList: [] = [];
-  public allReceivedRequestsList: [] = [];
+  public allFriendsList: any = [];
+  public allUsersList: any = [];
+  public allSentRequestsList: any = [];
+  public allReceivedRequestsList: any = [];
 
   constructor(
     public router: Router,
@@ -40,20 +40,10 @@ export class FriendsComponent implements OnInit {
     this.userInfo = this.userService.getUserInfoFromLocalStorage();
     this.allFriendsList = this.userInfo.friends;
     this.findFriends = true;
+    this.getAllFriends();
     this.getAllUsers();
     this.getAllSentRequests();
     this.getAllReceivedRequests();
-    this.getAllFriends();
-  }
-
-  public mobileNavHandler(): any {
-    $(".backdrop").fadeIn();
-    $(".mobile-nav").fadeIn(300);
-  }
-
-  public closeMobileNav(): any {
-    $(".backdrop").fadeOut(100);
-    $(".mobile-nav").fadeOut(300);
   }
 
   public onClickOnLogo(event) {
@@ -74,7 +64,7 @@ export class FriendsComponent implements OnInit {
     this.cancelRequest = true;
     this.findFriends = false;
     this.receivedRequest = false;
-    this.closeMobileNav();
+
     this.getAllSentRequests();
   }
 
@@ -82,7 +72,7 @@ export class FriendsComponent implements OnInit {
     this.cancelRequest = false;
     this.findFriends = false;
     this.receivedRequest = true;
-    this.closeMobileNav();
+
     this.getAllReceivedRequests();
   }
 
@@ -95,6 +85,13 @@ export class FriendsComponent implements OnInit {
       response => {
         if (response.status === 200) {
           this.allUsersList = response.data;
+          this.allUsersList.map((user, index) => {
+            this.allFriendsList.map(friend => {
+              if (user.userId !== friend.friendId) {
+                this.allUsersList[index] = user;
+              }
+            });
+          });
         } else {
           this.toastr.warning(response.message);
         }
